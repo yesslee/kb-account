@@ -1,15 +1,9 @@
 <template>
-    <div>
-
-    </div>
+  <div>
+    <h2>Transaciton List</h2>
+  </div>
 </template>
 
-<script>
-    export default {
-        
-    }
-</script>
+<script setup></script>
 
-<style lang="scss" scoped>
-
-</style>
+<style scoped></style>
