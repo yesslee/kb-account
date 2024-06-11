@@ -1,22 +1,32 @@
-<script>
-import Navigator from './components/Navigator.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Navigator
-  }
-}
-</script>
-
 <template>
-  <div id="app">
-    <Navigator />
-    
-    <router-view />
+  <div class="container">
+
+    <Navigator></Navigator>
+    <router-view></router-view>
+    <!-- <div class="row"> -->
+    <!-- <div class="col"><FilterBar></FilterBar></div>
+      <div class="col"><router-view></router-view></div>
+    </div> -->
   </div>
 </template>
 
-<style scoped>
+<script setup>
 
-</style>
+import { computed } from 'vue';
+import { useMemberStore} from '@/stores/transaction.js'
+import { useTransactionStore} from '@/stores/transaction.js'
+import Navigator from "@/components/Navigator.vue";
+import FilterBar from "@/components/FilterBar.vue";
+
+
+const memberStore = useMemberStore();
+const transactionStore = useTransactionStore();
+
+const fetchMember = memberStore.fetchMember;
+const fetchTransaction = transactionStore.fetchTransaction;
+fetchTransaction("dh1010a");
+fetchMember("dh1010a");
+
+<style scoped></style>
+
+</script>
