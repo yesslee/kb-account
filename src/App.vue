@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <Navigator></Navigator>
     <router-view></router-view>
     <!-- <div class="row"> -->
@@ -18,7 +17,6 @@ import { useTransactionStore} from '@/stores/transactions.js'
 import Navigator from "@/components/Navigator.vue";
 // import FilterBar from "@/pages/FilterBar.vue";
 
-
 const memberStore = useMemberStore();
 const transactionStore = useTransactionStore();
 
@@ -26,8 +24,6 @@ const fetchMember = memberStore.fetchMember;
 const fetchTransactionList = transactionStore.fetchTransactionList;
 fetchTransactionList("dh1010a");
 fetchMember("dh1010a");
-
-
 </script>
 
 <style scoped></style>
