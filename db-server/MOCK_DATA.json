@@ -1,0 +1,38 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "memberId" : "dh1010a",
+      "name": "Paek",
+      "pw": "1234",
+      "email": "tjelk0@unc.edu",
+      "gender": "Male"
+    }
+  ],
+  "transactionList": [
+    {
+      "id": 1,
+      "memberId": "dh1010a",
+      "date": "2024-06-10 12:00",
+      "price": "12000",
+      "category": "술",
+      "type": "pay"
+    },
+    {
+      "id": 2,
+      "memberId": "dh1010a",
+      "date": "2024-06-10 12:00",
+      "price": "12000",
+      "category": "쇼핑",
+      "type": "pay"
+    },
+    {
+      "memberId": "dh1010a",
+      "date": "2024-06-11 12:00",
+      "price": "120020",
+      "category": "쇼핑",
+      "type": "pay",
+      "id": 3
+    }
+  ]
+}

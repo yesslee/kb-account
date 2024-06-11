@@ -1,7 +1,29 @@
 <template>
-  <div></div>
+  <div class="item">
+    <p>ID: {{ transactionItem.id }}</p>
+    <p>회원 ID: {{ transactionItem.memberId }}</p>
+    <p>날짜: {{ transactionItem.date }}</p>
+    <p>금액: {{ transactionItem.price }}</p>
+    <p>카테고리: {{ transactionItem.category }}</p>
+    <p>유형: {{ transactionItem.type }}</p>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useMemberStore} from '@/stores/transactions.js'
+import { useTransactionStore} from '@/stores/transactions.js'
 
-<style scoped></style>
+defineProps({
+	transactionItem: { Type: Object, required:true }
+})
+
+const router = useRouter();
+const memberStore = useMemberStore();
+const transactionStore = useTransactionStore();
+
+const { deleteTransaction } = transactionStore;
+
+
+</script>
