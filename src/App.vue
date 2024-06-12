@@ -22,20 +22,13 @@ const transactionStore = useTransactionStore;
 
 const fetchMember = memberStore.fetchMember;
 const fetchTransactionList = transactionStore.fetchTransactionList;
-// fetchTransactionList("dh1010a");
-// fetchMember("dh1010a");
 
+const month = new Date().getMonth() + 1;
+console.log('test',month);
+provide('month',month)
 
-export default{
-  name  :'app',
-  components : {Navigator},
-  setup(){
-    const month = new Date().getMonth() + 1;
-    console.log('test',month);
-    provide('month',month)
-  }
-}
-
+fetchTransactionList("dh1010a");
+fetchMember("dh1010a");
 </script>
 
 <style scoped></style>

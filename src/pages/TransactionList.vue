@@ -1,9 +1,26 @@
 <template>
-  <div>
-    <h2>Transaciton List</h2>
+  <h2> 하이</h2>
+  <div class="item-list">
+    <TransactionItem v-for="item in transactionList" :key="item.id" :transactionItem="item"/>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+import { useTransactionStore } from '@/stores/transactions.js';
+import TransactionItem from '@/pages/TransactionItem.vue';
 
-<style scoped></style>
+const transactionStore = useTransactionStore();
+
+const transactionList = computed(() => transactionStore.transactionList);
+console.log(transactionList);
+
+</script>
+
+<style scoped>
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+</style>

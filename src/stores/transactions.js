@@ -60,7 +60,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         try {
             const response = await axios.get(BASEURI + `/${transaction}`);
             if (response.status === 200) {
-                state.TranscationList = response.data.filter(transaction => transaction.memberId === memberId);
+                state.transactionList = response.data.filter(transaction => transaction.memberId === memberId);
             } else {
                 alert('데이터 조회 실패');
             }
