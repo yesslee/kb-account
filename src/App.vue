@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <Navigator></Navigator>
     <router-view></router-view>
     <!-- <div class="row"> -->
@@ -10,23 +9,33 @@
   </div>
 </template>
 
-<script setup>
+<script>
 
-import { computed } from 'vue';
-import { useMemberStore} from '@/stores/transaction.js'
-import { useTransactionStore} from '@/stores/transaction.js'
+import { computed,provide } from 'vue';
+import { useMemberStore} from '@/stores/transactions.js'
+import { useTransactionStore} from '@/stores/transactions.js'
 import Navigator from "@/components/Navigator.vue";
-import FilterBar from "@/components/FilterBar.vue";
+// import FilterBar from "@/pages/FilterBar.vue";
 
-
-const memberStore = useMemberStore();
-const transactionStore = useTransactionStore();
+const memberStore = useMemberStore;
+const transactionStore = useTransactionStore;
 
 const fetchMember = memberStore.fetchMember;
-const fetchTransaction = transactionStore.fetchTransaction;
-fetchTransaction("dh1010a");
-fetchMember("dh1010a");
+const fetchTransactionList = transactionStore.fetchTransactionList;
+// fetchTransactionList("dh1010a");
+// fetchMember("dh1010a");
 
-<style scoped></style>
+
+export default{
+  name  :'app',
+  components : {Navigator},
+  setup(){
+    const month = new Date().getMonth() + 1;
+    console.log('test',month);
+    provide('month',month)
+  }
+}
 
 </script>
+
+<style scoped></style>
