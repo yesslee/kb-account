@@ -108,7 +108,7 @@ export default {
         (t) => new Date(t.date).toDateString() === date.toDateString() && t.type === "Income"
       );
       const income = filteredTransactions.reduce((sum, t) => sum + parseInt(t.price, 10), 0);
-      return income > 0 ? income : "ㅤ";
+      return income > 0 ? income : "ㅤ ";
     };
 
     const getExpense = (date) => {
