@@ -1,4 +1,5 @@
 <template>
+  
   <div class="container">
     <Navigator></Navigator>
     <router-view></router-view>
@@ -27,7 +28,7 @@ const month = new Date().getMonth() + 1;
 console.log('test',month);
 provide('month',month)
 
-fetchTransactionList("dh1010a");
+fetchTransactionList("dh1010a", "2024-06");
 fetchMember("dh1010a");
 </script>
 
