@@ -1,32 +1,59 @@
 <template>
-    <div class="main-container">
-        <nav class="navbar navbar-light" style="background-color: #3b5998;">
-            <div class="navbar">
-                <div class="navbar-left">
-                    <a>KB-ACCOUNT</a>
-                </div>
-                <div class="navbar-center">
-                    <img src="../img/left_button.png" class="nav-icon">
-                    <div class="month-year">
-                        <a>6월</a>
-                        <a>2024</a>
-                    </div>
-                    <img src="../img/right_button.png" class="nav-icon">
-                </div>
-                <div class="navbar-right">
-                    <img src="../img/payment_detail.png" class="nav-icon">
-                    <img src="../img/graph_button.png" class="nav-icon">
-                    <img src="../img/calendar_button.png" class="nav-icon">
-                    <img src="../img/profile.png" class="nav-icon">
-                </div>
-            </div>
-        </nav>
-    </div>
+  <div class="main-container">
+    <nav class="navbar navbar-light">
+      <div class="navbar-content">
+        <div class="navbar-left">
+          <a>KB-ACCOUNT</a>
+        </div>
+        <div class="navbar-center">
+          <img src="../img/left_button.png" class="nav-icon" @click="previousMonth">
+          <div class="month-year">
+            <a>{{ month }}월</a>
+            <a>2024</a>
+          </div>
+          <img src="../img/right_button.png" class="nav-icon" @click="nextMonth">
+        </div>
+        <div class="navbar-right">
+          <img src="../img/payment_detail.png" class="nav-icon">
+          <img src="../img/graph_button.png" class="nav-icon">
+          <img src="../img/calendar_button.png" class="nav-icon">
+          <img src="../img/profile.png" class="nav-icon">
+        </div>
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script>
+import { ref, inject } from 'vue';
+
 export default {
-  name: 'Navigator'
+  name: 'Navigator',
+  setup() {
+    const month = ref(new Date().getMonth() + 1); // 현재 월로 초기화
+
+    function previousMonth() {
+      if (month.value > 1) {
+        month.value -= 1;
+      } else {
+        month.value = 12; // 1월에서 이전 월을 클릭하면 12월로 이동
+      }
+    }
+
+    function nextMonth() {
+      if (month.value < 12) {
+        month.value += 1;
+      } else {
+        month.value = 1; // 12월에서 다음 월을 클릭하면 1월로 이동
+      }
+    }
+
+    return {
+      month,
+      previousMonth,
+      nextMonth
+    };
+  }
 }
 </script>
 
@@ -47,7 +74,17 @@ export default {
   box-sizing: border-box;
 }
 
+/* 네비게이션 바가 페이지 상단에 고정되도록 수정 */
 .navbar {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* ensure it stays on top */
+  background-color: #3b5998; /* 배경색 유지 */
+  width: 100%;
+}
+
+.navbar-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -92,5 +129,4 @@ export default {
 .navbar img.nav-icon:not(:first-child) {
   margin-left: 10px;
 }
-
 </style>
