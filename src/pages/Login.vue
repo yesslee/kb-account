@@ -1,10 +1,8 @@
 <template>
-  <div class="card" style="width: 700px">
-    <div class="container card-body w-50">
-      <!-- <div class="bg-primary" style="height: 100px"> -->
-      <h1 class="text-white bg-primary" style="height: 100px">Login</h1>
-      <!-- </div> -->
-      <div class="row g-3">
+  <div class="d-flex justify-content-center align-items-center">
+    <div style="width: 700px">
+      <div class="container card card-body mt-5 w-50">
+        <h1 class="text-white bg-primary" style="height: 100px">Login</h1>
         <label class="col fs-5">ID</label>
         <input
           type="text"
@@ -19,7 +17,7 @@
           v-model="info.pw"
           required
         />
-        <button class="btn btn-primary rounded-pill" @click="login">
+        <button class="btn btn-primary mt-5 rounded-pill" @click="login">
           로그인
         </button>
       </div>
