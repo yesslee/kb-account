@@ -1,4 +1,5 @@
 <template>
+  
   <div class="container">
     <Navigator></Navigator>
     <router-view></router-view>
@@ -22,7 +23,7 @@ const transactionStore = useTransactionStore();
 
 const fetchMember = memberStore.fetchMember;
 const fetchTransactionList = transactionStore.fetchTransactionList;
-fetchTransactionList("dh1010a");
+fetchTransactionList("dh1010a", "2024-06");
 fetchMember("dh1010a");
 </script>
 

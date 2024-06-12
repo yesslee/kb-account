@@ -56,11 +56,12 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         transactionList : []
     });
 
-    const fetchTransactionList = async (memberId) => {
+    const fetchTransactionList = async (memberId, date) => {
         try {
             const response = await axios.get(BASEURI + `/${transaction}`);
             if (response.status === 200) {
-                state.transactionList = response.data.filter(transaction => transaction.memberId === memberId);
+                state.transactionList = response.data.filter(transaction => transaction.memberId === memberId
+                    && transaction.date.startsWith(date.substr(0, 7)));
             } else {
                 alert('데이터 조회 실패');
             }
@@ -69,7 +70,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         }
     }
 
-    const addTransaction = async ({ memberId, date, price, category, type }, successCallback) => {
+    const addTransaction = async ({ memberId, date, price, title, category, type }, successCallback) => {
         if (!memberId || memberId.trim()==="") {
             alert('멤버 ID는 반드시 입력해야 합니다');
             return;
@@ -81,10 +82,10 @@ export const useTransactionStore = defineStore("transactionStore", () => {
 
         }
         try {
-            const payload = { memberId, date, price, category, type};
+            const payload = { memberId, date, price, title, category, type};
             const response = await axios.post(BASEURI, payload)
             if (response.data.status === "success") {
-                state.todoList.push({memberId, date, price, category, type })
+                state.todoList.push({memberId, date, price, title,category, type })
                 successCallback();
               } else {
                 alert('거래내역 추가 실패 : ' + response.data.message);
@@ -94,7 +95,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         }
     }
 
-    const updateTransaction = async ({ id, memberId, date, price, category, type }, successCallback) => {
+    const updateTransaction = async ({ id, memberId, date, price, title, category, type }, successCallback) => {
         if (!memberId || memberId.trim()==="") {
             alert('멤버 ID는 반드시 입력해야 합니다');
             return;
@@ -106,11 +107,11 @@ export const useTransactionStore = defineStore("transactionStore", () => {
 
         }
         try {
-            const payload = { memberId, date, price, category, type };
+            const payload = { memberId, date, price, title, category, type };
             const response = await axios.put(BASEURI + `/${id}`, payload)
             if (response.data.status === "success") {
                 let index = state.transactionList.findIndex((transaction) => transaction.id === id);
-                state.transactionList[index] = { id, memberId, date, price, category, type };
+                state.transactionList[index] = { id, memberId, date, price, title, category, type };
                 successCallback();
             } else {
                 alert('거래내역 변경 실패 : ' + response.data.message);
