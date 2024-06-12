@@ -1,7 +1,7 @@
 {
   "members": [
     {
-      "id": 1,
+      "id": "1",
       "memberId": "dh1010a",
       "name": "Paek",
       "pw": "1234",
@@ -9,7 +9,7 @@
       "gender": "Male"
     },
     {
-      "id": 2,
+      "id": "2",
       "memberId": "dh1010a2",
       "name": "kim",
       "pw": "1234",
@@ -19,7 +19,7 @@
   ],
   "transactionList": [
     {
-      "id": 1,
+      "id": "1",
       "memberId": "dh1010a",
       "date": "2024-06-10 12:00",
       "price": "12000",
@@ -28,12 +28,12 @@
       "type": "Pay"
     },
     {
-      "id": 2,
+      "id": "2",
       "memberId": "dh1010a",
       "date": "2024-06-10 12:00",
       "price": "12000",
       "category": "쇼핑",
-      "title" : "외투",
+      "title": "외투",
       "type": "Pay"
     },
     {
@@ -42,8 +42,8 @@
       "price": "1000000",
       "category": "용돈",
       "type": "Income",
-      "title" : "용돈",
-      "id": 3
+      "title": "용돈",
+      "id": "3"
     },
     {
       "memberId": "dh1010a",
@@ -51,8 +51,8 @@
       "price": "6000",
       "category": "교통",
       "type": "Pay",
-      "title" : "택시",
-      "id": 4
+      "title": "택시",
+      "id": "4"
     },
     {
       "memberId": "dh1010a",
@@ -60,8 +60,8 @@
       "price": "50000",
       "category": "생활",
       "type": "Pay",
-      "title" : "마트",
-      "id": 5
+      "title": "마트",
+      "id": "5"
     },
     {
       "memberId": "dh1010a",
