@@ -7,7 +7,7 @@
     </div>
     <div class="calendar-body">
       <div class="calendar-row">
-        <div class="calendar-cell header-cell" v-for="day in dayNames" :key="day">{{ day }}</div>
+        <div class="calendar-day" v-for="day in dayNames" :key="day">{{ day }}</div>
       </div>
       <div class="calendar-row" v-for="(week, index) in weeks" :key="index">
         <div
@@ -136,9 +136,9 @@ export default {
 
 <style scoped>
 .calendar {
-  max-width: 600px;
+  max-width: 400px 600px;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -146,8 +146,8 @@ export default {
 .calendar-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  background-color: #f0f0f0;
+  padding: 20px;
+  background-color: #fdfdfd;
 }
 
 .calendar-body {
@@ -158,16 +158,26 @@ export default {
 .calendar-row {
   display: contents;
 }
+.calendar-day {
+  padding: 20px;
+  text-align: center;
+  border: 0.1px solid #000000;
+  background-color: rgb(192, 205, 240);
+  position: relative;
+  color: white;
+}
 
 .calendar-cell {
   padding: 10px;
-  text-align: center;
-  border: 1px solid #eee;
+  text-align: left;
+  font-style: normal;
+  border: 1px solid #000000;
+  background-color: rgb(255, 255, 255);
   position: relative;
 }
 
 .calendar-cell--empty {
-  background-color: #f9f9f9;
+  background-color: hsl(0, 5%, 87%);
   color: #ccc;
 }
 
