@@ -1,14 +1,22 @@
 <template>
-  <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <br>
+  <link
+    href="/docs/5.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
+  <br />
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <!-- FilterBar component to handle filtering -->
-        <FilterBar @filter-category="filterCategory" @filter-delivery="filterDelivery" @filter-price-range="filterPriceRange"></FilterBar>
+        <FilterBar
+          @filter-category="filterCategory"
+          @filter-delivery="filterDelivery"
+          @filter-price-range="filterPriceRange"
+        ></FilterBar>
       </div>
       <div class="col-md-9">
-        <div class="list-header" style="width: 100%; margin: 0 auto;">
+        <div class="list-header" style="width: 100%; margin: 0 auto">
           <div class="list-header-left d-flex align-items-center">
             <p class="list-header-total mb-0 me-4 fs-3">전체 내역 {{ filteredTransactionList.length }}건</p>
           </div>
@@ -17,10 +25,10 @@
           <br />
           <div class="list-header-right d-flex align-items-center">
             <div class="d-flex align-items-center me-1">
-              <p class="list-header-money mb-0 me-1">수입 {{formatNumber(totalIncome)}}</p>
+              <p class="list-header-money mb-0 me-1">수입 {{ formatNumber(totalIncome) }}</p>
             </div>
             <div class="d-flex align-items-center me-1">
-              <p class="list-header-money mb-0" style="color: #E139C2">지출 {{formatNumber(totalPay)}}</p>
+              <p class="list-header-money mb-0" style="color: #e139c2">지출 {{ formatNumber(totalPay) }}</p>
             </div>
           </div>
         </div>
@@ -34,36 +42,57 @@
               </div>
             </div>
             <div class="transaction-list">
-              <TransactionItem v-for="transaction in item.transactions" @click="showModal(transaction)" :key="transaction.id" :transactionItem="transaction" />
+              <TransactionItem
+                v-for="transaction in item.transactions"
+                @click="showTransactionDetailModal(transaction)"
+                :key="transaction.id"
+                :transactionItem="transaction"
+              />
             </div>
           </div>
         </div>
+        <button @click="openAddTransactionModal" class="btn btn-primary add-transaction-button">+</button>
       </div>
     </div>
   </div>
-  <TransactionEditModal v-if="selectedTransaction != null" :show="showTransactionModal" :transactionItem="selectedTransaction" @sendClose="closeModal" />
+  <TransactionEditModal
+    v-if="showTransactionDetailModalFlag"
+    :show="showTransactionDetailModalFlag"
+    @sendClose="closeTransactionDetailModal"
+  >
+    <div>
+      <!-- Transaction detail content goes here -->
+    </div>
+  </TransactionEditModal>
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue';
-import { useTransactionStore } from '@/stores/transactions.js';
-import TransactionItem from '@/pages/TransactionItem.vue';
-import TransactionEditModal from '@/components/TransactionEditModal.vue';
+import { computed, ref, watch } from "vue";
+import { useTransactionStore } from "@/stores/transactions.js";
+import { useRouter } from "vue-router";
+import TransactionItem from "@/pages/TransactionItem.vue";
+import TransactionEditModal from "@/components/TransactionEditModal.vue";
 import FilterBar from "@/pages/FilterBar.vue";
 
-let showTransactionModal = ref(false);
+let showTransactionDetailModalFlag = ref(false);
 let selectedTransaction = ref(null);
 
-const showModal = (transactionData) => {
+const router = useRouter();
+
+const showTransactionDetailModal = (transactionData) => {
   if (transactionData) {
     selectedTransaction.value = { ...transactionData };
-    showTransactionModal.value = true;
+    showTransactionDetailModalFlag.value = true;
   }
 };
 
-const closeModal = () => {
-  showTransactionModal.value = false;
+const closeTransactionDetailModal = () => {
+  showTransactionDetailModalFlag.value = false;
   selectedTransaction.value = null;
+};
+
+const openAddTransactionModal = () => {
+  router.push("/list/add");
 };
 
 const isIncomeChecked = ref(true);
@@ -246,7 +275,7 @@ function calculateDailyTotals(transactions) {
 }
 
 .list-header-right {
-  color: #56ABD8;
+  color: #56abd8;
 }
 
 .list-header-total {
@@ -265,7 +294,7 @@ function calculateDailyTotals(transactions) {
 .day-list-item {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   padding: 12px 0;
   width: 100%; /* 기존 70%에서 100%로 변경 */
 }
@@ -284,7 +313,7 @@ function calculateDailyTotals(transactions) {
 .day-list-totals {
   display: flex;
   align-items: center;
-  color: #56ABD8;
+  color: #56abd8;
   font-size: 16px;
   width: 30%;
   justify-content: flex-end;
@@ -303,5 +332,17 @@ function calculateDailyTotals(transactions) {
   display: flex;
   flex-direction: column;
   gap: 0px;
+}
+.add-transaction-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
