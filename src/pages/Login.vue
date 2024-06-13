@@ -32,33 +32,26 @@ import { useMemberStore } from "@/stores/transactions.js";
 import { useAuthStore } from "@/stores/auth.js";
 
 const router = useRouter();
-// const currentRoute = useRoute();
-
 const memberStore = useMemberStore();
-const info = reactive({ memberId: "", pw: "" });
-
 const authStore = useAuthStore();
 
-// const handleLogin = () => {
-//   authStore.login();
-//   if (router.currentRoute.value.name !== "transactionList") {
-//     router.push({ name: "transactionList" });
-//   }
-// };
+const info = reactive({ memberId: "", pw: "" });
 
+// 로그인 성공 시 호출되는 콜백 함수
 const successCallback = () => {
   authStore.login();
-  // router.push({ name: "transactionList" });
 
   if (router.currentRoute.value.name !== "transactionList") {
     router.push({ name: "transactionList" });
   } else router.push({ name: "login" });
 };
 
+// 로그인 실패 시 호출되는 콜백 함수
 const failCallback = () => {
   alert("로그인 실패");
 };
 
+// 유저 정보를 로컬 스토리지에 저장하는 함수
 const setUserInfo = (userInfo) => {
   if (userInfo && userInfo.authenticated) {
     window.localStorage.setItem("userInfo", btoa(JSON.stringify(userInfo)));
@@ -67,6 +60,7 @@ const setUserInfo = (userInfo) => {
   }
 };
 
+// 로컬 스토리지에서 유저 정보를 가져오는 함수
 const getUserInfo = () => {
   let strUserInfo = window.localStorage.getItem("userInfo");
   if (!strUserInfo) {
@@ -76,6 +70,7 @@ const getUserInfo = () => {
   }
 };
 
+// 로그인 프로세스를 처리하는 함수
 const loginProcess = (userid, password, successCallback, failCallback) => {
   const dbMemberList = memberStore.member; // Fetching member data
   const user = dbMemberList.find(
@@ -93,11 +88,13 @@ const loginProcess = (userid, password, successCallback, failCallback) => {
   }
 };
 
+// 로그아웃 프로세스를 처리하는 함수
 const logoutProcess = (callback) => {
   setUserInfo(null);
   callback();
 };
 
+// 로그인 버튼 클릭 시 호출되는 함수
 const login = () => {
   loginProcess(info.memberId, info.pw, successCallback, failCallback);
 };
