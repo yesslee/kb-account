@@ -83,7 +83,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         }
         try {
             const payload = { memberId, date, price, title, category, type};
-            const response = await axios.post(BASEURI, payload)
+            const response = await axios.post(BASEURI + `/${transaction}`, payload)
             if (response.data.status === "success") {
                 state.todoList.push({memberId, date, price, title,category, type })
                 successCallback();
