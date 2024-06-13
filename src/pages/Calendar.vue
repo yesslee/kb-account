@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
     <div class="calendar-header">
-      <button @click="prevMonth">이전</button>
+      <button @click="prevMonth">이전 달</button>
       <div>{{ monthNames[currentMonth] }} {{ currentYear }}</div>
-      <button @click="nextMonth">다음</button>
+      <button @click="nextMonth">다음 달</button>
     </div>
     <div class="calendar-body">
       <div class="calendar-row">
@@ -29,108 +29,83 @@
   </div>
 </template>
 
-<script>
-import { ref, computed, onMounted } from "vue";
-import axios from "axios";
+<script setup>
+import { ref, computed } from "vue";
+import { useTransactionStore } from "@/stores/transactions.js";
 
-export default {
-  setup() {
-    const currentYear = ref(new Date().getFullYear());
-    const currentMonth = ref(new Date().getMonth());
-    const dayNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-    const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+const currentYear = ref(new Date().getFullYear());
+const currentMonth = ref(new Date().getMonth());
+const dayNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
-    const transactionsUrl = "http://localhost:3001/transactionList";
-    const transactions = ref([]);
+const transactionStore = useTransactionStore();
+const transactions = computed(() => transactionStore.transactionList);
 
-    onMounted(async () => {
-      try {
-        const response = await axios.get(transactionsUrl);
-        transactions.value = response.data;
-      } catch (error) {
-        console.error("Failed to fetch transactions:", error);
-      }
-    });
+const weeks = computed(() => {
+  const startOfMonth = new Date(currentYear.value, currentMonth.value, 1);
+  const endOfMonth = new Date(currentYear.value, currentMonth.value + 1, 0);
 
-    const weeks = computed(() => {
-      const startOfMonth = new Date(currentYear.value, currentMonth.value, 1);
-      const endOfMonth = new Date(currentYear.value, currentMonth.value + 1, 0);
+  const weeks = [];
+  let currentWeek = [];
+  let currentDate = new Date(startOfMonth);
 
-      const weeks = [];
-      let currentWeek = [];
-      let currentDate = new Date(startOfMonth);
+  for (let i = 0; i < startOfMonth.getDay(); i++) {
+    currentWeek.push({ date: null, isCurrentMonth: false });
+  }
 
-      for (let i = 0; i < startOfMonth.getDay(); i++) {
-        currentWeek.push({ date: null, isCurrentMonth: false });
-      }
+  while (currentDate <= endOfMonth) {
+    currentWeek.push({ date: new Date(currentDate), isCurrentMonth: true });
 
-      while (currentDate <= endOfMonth) {
-        currentWeek.push({ date: new Date(currentDate), isCurrentMonth: true });
+    if (currentDate.getDay() === 6) {
+      weeks.push(currentWeek);
+      currentWeek = [];
+    }
 
-        if (currentDate.getDay() === 6) {
-          weeks.push(currentWeek);
-          currentWeek = [];
-        }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
 
-        currentDate.setDate(currentDate.getDate() + 1);
-      }
+  if (currentWeek.length > 0) {
+    while (currentWeek.length < 7) {
+      currentWeek.push({ date: null, isCurrentMonth: false });
+    }
+    weeks.push(currentWeek);
+  }
 
-      if (currentWeek.length > 0) {
-        while (currentWeek.length < 7) {
-          currentWeek.push({ date: null, isCurrentMonth: false });
-        }
-        weeks.push(currentWeek);
-      }
+  return weeks;
+});
 
-      return weeks;
-    });
+const prevMonth = () => {
+  if (currentMonth.value === 0) {
+    currentMonth.value = 11;
+    currentYear.value--;
+  } else {
+    currentMonth.value--;
+  }
+};
 
-    const prevMonth = () => {
-      if (currentMonth.value === 0) {
-        currentMonth.value = 11;
-        currentYear.value--;
-      } else {
-        currentMonth.value--;
-      }
-    };
+const nextMonth = () => {
+  if (currentMonth.value === 11) {
+    currentMonth.value = 0;
+    currentYear.value++;
+  } else {
+    currentMonth.value++;
+  }
+};
 
-    const nextMonth = () => {
-      if (currentMonth.value === 11) {
-        currentMonth.value = 0;
-        currentYear.value++;
-      } else {
-        currentMonth.value++;
-      }
-    };
+const getIncome = (date) => {
+  const filteredTransactions = transactions.value.filter(
+    (t) => new Date(t.date).toDateString() === date.toDateString() && t.type === "Income"
+  );
+  const income = filteredTransactions.reduce((sum, t) => sum + parseInt(t.price, 10), 0);
+  return income > 0 ? income : "ㅤ ";
+};
 
-    const getIncome = (date) => {
-      const filteredTransactions = transactions.value.filter(
-        (t) => new Date(t.date).toDateString() === date.toDateString() && t.type === "Income"
-      );
-      const income = filteredTransactions.reduce((sum, t) => sum + parseInt(t.price, 10), 0);
-      return income > 0 ? income : "ㅤ ";
-    };
-
-    const getExpense = (date) => {
-      const filteredTransactions = transactions.value.filter(
-        (t) => new Date(t.date).toDateString() === date.toDateString() && t.type === "Pay"
-      );
-      const expense = filteredTransactions.reduce((sum, t) => sum + parseInt(t.price, 10), 0);
-      return expense > 0 ? expense : "ㅤ";
-    };
-
-    return {
-      currentYear,
-      currentMonth,
-      dayNames,
-      monthNames,
-      weeks,
-      prevMonth,
-      nextMonth,
-      getIncome,
-      getExpense,
-    };
-  },
+const getExpense = (date) => {
+  const filteredTransactions = transactions.value.filter(
+    (t) => new Date(t.date).toDateString() === date.toDateString() && t.type === "Pay"
+  );
+  const expense = filteredTransactions.reduce((sum, t) => sum + parseInt(t.price, 10), 0);
+  return expense > 0 ? expense : "ㅤ";
 };
 </script>
 
