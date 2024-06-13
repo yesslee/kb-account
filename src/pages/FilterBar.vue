@@ -15,7 +15,7 @@
       <h3>금액 범위</h3>
       <br>
       <!-- vue-slider를 사용하여 금액 범위를 선택 -->
-      <vue-slider v-model="localPriceRange" :min="0" :max="1000000" :interval="1000" tooltip="always" />
+      <VueSlider v-model="localPriceRange" :min="0" :max="1000000" :interval="1000" />
     </div>
     
     <div class="filter-section">
@@ -33,8 +33,8 @@
 
 <script setup>
 import { ref } from 'vue';
-// import VueSlider from 'vue-slider-component';
-// import 'vue-slider-component/theme/default.css';
+import VueSlider from 'vue-slider-component';
+import 'vue-slider-component/theme/default.css';
 
 // props 및 emit 정의
 const props = defineProps();
