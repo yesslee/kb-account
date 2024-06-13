@@ -12,9 +12,9 @@
           <div class="list-header-left d-flex align-items-center">
             <p class="list-header-total mb-0 me-4 fs-3">전체 내역 {{ filteredTransactionList.length }}건</p>
           </div>
-          <br>
-          <br>
-          <br>
+          <br />
+          <br />
+          <br />
           <div class="list-header-right d-flex align-items-center">
             <div class="d-flex align-items-center me-1">
               <p class="list-header-money mb-0 me-1">수입 {{formatNumber(totalIncome)}}</p>
@@ -84,7 +84,7 @@ const handlePayCheckboxChange = () => {
 
 // Filter related state and methods
 const selectedCategories = ref([]);
-const selectedDelivery = ref('');
+const selectedDelivery = ref("");
 const selectedPriceRange = ref([0, 1000000]);
 
 const filterCategory = (categories) => {
@@ -103,13 +103,17 @@ const filterPriceRange = (range) => {
 const filteredTransactionList = computed(() => {
   let filtered = transactionList.value;
   if (selectedCategories.value.length) {
-    filtered = filtered.filter(transaction => selectedCategories.value.includes(transaction.category));
+    filtered = filtered.filter((transaction) => selectedCategories.value.includes(transaction.category));
   }
   if (selectedDelivery.value) {
-    filtered = filtered.filter(transaction => transaction.type === selectedDelivery.value);
+    filtered = filtered.filter((transaction) => transaction.type === selectedDelivery.value);
   }
   if (selectedPriceRange.value) {
-    filtered = filtered.filter(transaction => parseFloat(transaction.price) >= selectedPriceRange.value[0] && parseFloat(transaction.price) <= selectedPriceRange.value[1]);
+    filtered = filtered.filter(
+      (transaction) =>
+        parseFloat(transaction.price) >= selectedPriceRange.value[0] &&
+        parseFloat(transaction.price) <= selectedPriceRange.value[1]
+    );
   }
   return filtered;
 });
@@ -192,7 +196,7 @@ function formatNumber(value) {
 
 function groupByDate(transactionList) {
   return transactionList.reduce((groups, transaction) => {
-    const date = new Date(transaction.date).toLocaleDateString('ko-KR');
+    const date = new Date(transaction.date).toLocaleDateString("ko-KR");
     if (!groups[date]) {
       groups[date] = [];
     }
@@ -203,13 +207,13 @@ function groupByDate(transactionList) {
 
 function calculateDailyTotals(transactions) {
   return transactions.reduce((dailyTotals, transaction) => {
-    const date = new Date(transaction.date).toLocaleDateString('ko-KR');
+    const date = new Date(transaction.date).toLocaleDateString("ko-KR");
     if (!dailyTotals[date]) {
       dailyTotals[date] = { income: 0, pay: 0 };
     }
-    if (transaction.type === 'Income') {
+    if (transaction.type === "Income") {
       dailyTotals[date].income += parseFloat(transaction.price);
-    } else if (transaction.type === 'Pay') {
+    } else if (transaction.type === "Pay") {
       dailyTotals[date].pay += parseFloat(transaction.price);
     }
     return dailyTotals;
