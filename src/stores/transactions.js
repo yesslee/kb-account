@@ -108,25 +108,26 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         }
         try {
             const payload = { memberId, date, price, title, category, type };
-            const response = await axios.put(BASEURI + `/${id}`, payload)
-            if (response.data.status === "success") {
+            const response = await axios.put(BASEURI + `/${transaction}` + `/${id}`, payload);
+            if (response.status === 200) {
                 let index = state.transactionList.findIndex((transaction) => transaction.id === id);
                 state.transactionList[index] = { id, memberId, date, price, title, category, type };
                 successCallback();
             } else {
-                alert('거래내역 변경 실패 : ' + response.data.message);
+                alert('거래내역 변경 실패 : ' + response.data.status);
             }
         } catch(error) {
             alert('에러발생 :' + error);
         }
     }
 
-    const deleteTransaction = async (id) => {
+    const deleteTransaction = async (id, successCallback) => {
         try {
-            const response = await axios.delete(BASEURI + `/${id}`)
-            if (response.data.status === "success") {
+            const response = await axios.delete(BASEURI + `/${transaction}` + `/${id}`)
+            if (response.status === 200) {
                 let index = state.transactionList.findIndex((transaction) => transaction.id === id);
                 state.transactionList.splice(index, 1);
+                successCallback();
               } else {
                 alert('거래내역 삭제 실패 : ' + response.data.message);
               }

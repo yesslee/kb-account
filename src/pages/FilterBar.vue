@@ -33,8 +33,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import VueSlider from 'vue-slider-component';
-import 'vue-slider-component/theme/default.css';
+// import VueSlider from 'vue-slider-component';
+// import 'vue-slider-component/theme/default.css';
 
 // props 및 emit 정의
 const props = defineProps();
