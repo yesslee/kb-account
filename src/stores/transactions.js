@@ -27,24 +27,24 @@ export const useMemberStore = defineStore("memberStore", () => {
       alert("에러발생 :" + error);
     }
   };
-
+  
   const updateMember = async ({ id, memberId, name, pw, email, gender }, successCallback) => {
-    if (!memberId || memberId.trim() === "") {
-      alert("멤버 ID는 반드시 입력해야 합니다");
-      return;
-    }
-    try {
-      const payload = { memberId, name, pw, email, gender };
-      const response = await axios.put(BASEURI + `/${id}`, payload);
-      if (response.data.status === "success") {
-        state.member = { id, memberId, name, pw, email, gender };
-        successCallback();
-      } else {
-        alert("거래내역 변경 실패 : " + response.data.message);
+      if (!memberId || memberId.trim()==="") {
+          alert('멤버 ID는 반드시 입력해야 합니다');
+          return;
+      } 
+      try {
+          const payload = { memberId, name, pw, email, gender};
+          const response = await axios.put(BASEURI + `/${members}` + `/${id}`, payload)
+          if (response.status === 200) {
+              state.member = { id, memberId, name, pw, email, gender };
+              successCallback();
+          } else {
+              alert('거래내역 변경 실패 : ' + response.data.message);
+          }
+      } catch(error) {
+          alert('에러발생 :' + error);
       }
-    } catch (error) {
-      alert("에러발생 :" + error);
-    }
   };
 
   const member = computed(() => state.member);
@@ -122,6 +122,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       console.log(error);
     }
   };
+                                               
   const updateTransaction = async ({ id, memberId, date, price, title, category, type }, successCallback) => {
       if (!memberId || memberId.trim()==="") {
           alert('멤버 ID는 반드시 입력해야 합니다');
@@ -148,6 +149,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       }
     }
   };
+
   const deleteTransaction = async (id, successCallback) => {
       try {
           const response = await axios.delete(BASEURI + `/${transaction}` + `/${id}`)
