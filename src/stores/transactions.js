@@ -8,7 +8,7 @@ const BASEURI = "/api";
 
 export const useMemberStore = defineStore("memberStore", () => {
   const state = reactive({
-    member: {},
+    member: [],
   });
   const fetchMember = async (memberId) => {
     if (!memberId || memberId.trim() === "") {
@@ -26,7 +26,7 @@ export const useMemberStore = defineStore("memberStore", () => {
       alert("에러발생 :" + error);
     }
   };
-  
+
   const updateMember = async ({ id, memberId, name, pw, email, gender }, successCallback) => {
     if (!memberId || memberId.trim() === "") {
       alert('멤버 ID는 반드시 입력해야 합니다');
@@ -36,7 +36,7 @@ export const useMemberStore = defineStore("memberStore", () => {
       const payload = { memberId, name, pw, email, gender };
       const response = await axios.put(BASEURI + `/${members}` + `/${id}`, payload)
       if (response.status === 200) {
-        state.member = { id, memberId, name, pw, email, gender };
+        state.member[0] = { id, memberId, name, pw, email, gender };
         successCallback();
       } else {
         alert('거래내역 변경 실패 : ' + response.data.message);
@@ -46,14 +46,14 @@ export const useMemberStore = defineStore("memberStore", () => {
     }
   };
   const member = computed(() => state.member);
-  return { member, fetchMember };
+  return { member, fetchMember, updateMember };
 });
 
 export const useTransactionStore = defineStore("transactionStore", () => {
   const state = reactive({
     transactionList: [],
   });
-  
+
   const fetchTransactionList = async (memberId, date) => {
     try {
       const response = await axios.get(BASEURI + `/${transaction}`);
@@ -68,7 +68,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       alert("에러발생 :" + error);
     }
   };
-  
+
   const addTransaction = async ({ memberId, date, price, title, category, type }, successCallback) => {
     if (!memberId || memberId.trim() === "") {
       alert('멤버 ID는 반드시 입력해야 합니다');
@@ -92,7 +92,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       alert('에러발생 :' + error);
     }
   };
-  
+
   const updateTransaction = async ({ id, memberId, date, price, title, category, type }, successCallback) => {
     if (!memberId || memberId.trim() === "") {
       alert('멤버 ID는 반드시 입력해야 합니다');
@@ -117,7 +117,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       alert('에러발생 :' + error);
     }
   }
-  
+
   const deleteTransaction = async (id, successCallback) => {
     try {
       const response = await axios.delete(BASEURI + `/${transaction}` + `/${id}`)
