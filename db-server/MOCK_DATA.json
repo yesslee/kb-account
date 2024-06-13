@@ -19,19 +19,19 @@
   ],
   "transactionList": [
     {
-      "id": "1",
       "memberId": "dh1010a",
       "date": "2024-06-10 12:00",
       "price": "12000",
-      "category": "술/유흥",
       "title": "역전할맥",
-      "type": "Pay"
+      "category": "식비",
+      "type": "Pay",
+      "id": "1"
     },
     {
       "memberId": "dh1010a",
       "date": "2024-06-10 12:00",
-      "price": "120003",
-      "title": "외투2",
+      "price": "12000",
+      "title": "외투",
       "category": "쇼핑",
       "type": "Pay",
       "id": "2"
@@ -65,11 +65,11 @@
     },
     {
       "memberId": "dh1010a",
-      "date": "2024-06-15 12:00",
-      "price": "120020",
-      "category": "건강",
+      "date": "2024-06-18 12:00",
+      "price": "165452",
+      "title": "술/유흥",
+      "category": "생활",
       "type": "Pay",
-      "title": "병원",
       "id": "6"
     },
     {
@@ -92,20 +92,11 @@
     },
     {
       "memberId": "dh1010a",
-      "date": "2024-06-18 12:00",
-      "price": "165452",
-      "category": "건강",
-      "type": "Pay",
-      "title": "술/유흥",
-      "id": "6"
-    },
-    {
-      "memberId": "dh1010a",
       "date": "2024-06-19 12:00",
       "price": "191884",
-      "category": "건강",
-      "type": "Pay",
       "title": "교통",
+      "category": "교통",
+      "type": "Pay",
       "id": "9"
     },
     {
