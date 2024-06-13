@@ -1,28 +1,37 @@
 <template>
-  <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link
+    href="/docs/5.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
 
-  <br>
+  <br />
   <div class="container">
     <div class="row">
       <div class="col-md-3">
         <!-- FilterBar에서 발생한 이벤트를 처리 -->
-        <FilterBar @filter-category="filterCategory" @filter-delivery="filterDelivery" @filter-price-range="filterPriceRange"></FilterBar>
+        <FilterBar
+          @filter-category="filterCategory"
+          @filter-delivery="filterDelivery"
+          @filter-price-range="filterPriceRange"
+        ></FilterBar>
       </div>
       <div class="col-md-9">
-        <div class="list-header" style="width: 100%;">
+        <div class="list-header" style="width: 100%">
           <div class="list-header-left d-flex align-items-center">
             <p class="list-header-total mb-0 me-4 fs-3">전체 내역 {{ filteredTransactionList.length }}건</p>
           </div>
-          <br>
-          <br>
-          <br>
+          <br />
+          <br />
+          <br />
           <div class="list-header-right d-flex align-items-center">
             <div class="d-flex align-items-center me-1">
-              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault">
+              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault" />
               <p class="list-header-money mb-0 me-1">수입 {{ formatNumber(totalIncome) }}</p>
             </div>
             <div class="d-flex align-items-center me-1">
-              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault">
+              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault" />
               <p class="list-header-money mb-0" style="color: #e139c2">지출 {{ formatNumber(totalPay) }}</p>
             </div>
           </div>
@@ -38,7 +47,11 @@
               </div>
             </div>
             <div class="transaction-list">
-              <TransactionItem v-for="transaction in item.transactions" :key="transaction.id" :transactionItem="transaction" />
+              <TransactionItem
+                v-for="transaction in item.transactions"
+                :key="transaction.id"
+                :transactionItem="transaction"
+              />
             </div>
           </div>
         </div>
@@ -48,16 +61,16 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import { useTransactionStore } from '@/stores/transactions.js';
-import TransactionItem from '@/pages/TransactionItem.vue';
-import FilterBar from "@/pages/FilterBar.vue"
+import { computed, ref } from "vue";
+import { useTransactionStore } from "@/stores/transactions.js";
+import TransactionItem from "@/pages/TransactionItem.vue";
+import FilterBar from "@/pages/FilterBar.vue";
 
 const transactionStore = useTransactionStore();
 const transactionList = computed(() => transactionStore.transactionList);
 
 const selectedCategories = ref([]);
-const selectedDelivery = ref('');
+const selectedDelivery = ref("");
 const selectedPriceRange = ref([0, 1000000]);
 
 // 카테고리 필터 이벤트 처리
@@ -79,13 +92,17 @@ const filterPriceRange = (range) => {
 const filteredTransactionList = computed(() => {
   let filtered = transactionList.value;
   if (selectedCategories.value.length) {
-    filtered = filtered.filter(transaction => selectedCategories.value.includes(transaction.category));
+    filtered = filtered.filter((transaction) => selectedCategories.value.includes(transaction.category));
   }
   if (selectedDelivery.value) {
-    filtered = filtered.filter(transaction => transaction.type === selectedDelivery.value);
+    filtered = filtered.filter((transaction) => transaction.type === selectedDelivery.value);
   }
   if (selectedPriceRange.value) {
-    filtered = filtered.filter(transaction => parseFloat(transaction.price) >= selectedPriceRange.value[0] && parseFloat(transaction.price) <= selectedPriceRange.value[1]);
+    filtered = filtered.filter(
+      (transaction) =>
+        parseFloat(transaction.price) >= selectedPriceRange.value[0] &&
+        parseFloat(transaction.price) <= selectedPriceRange.value[1]
+    );
   }
   return filtered;
 });
@@ -148,7 +165,7 @@ function formatNumber(value) {
 // 거래 목록을 날짜별로 그룹화하는 함수
 function groupByDate(transactionList) {
   return transactionList.reduce((groups, transaction) => {
-    const date = new Date(transaction.date).toLocaleDateString('ko-KR');
+    const date = new Date(transaction.date).toLocaleDateString("ko-KR");
     if (!groups[date]) {
       groups[date] = [];
     }
@@ -160,13 +177,13 @@ function groupByDate(transactionList) {
 // 일별 총 수입 및 지출을 계산하는 함수
 function calculateDailyTotals(transactions) {
   return transactions.reduce((dailyTotals, transaction) => {
-    const date = new Date(transaction.date).toLocaleDateString('ko-KR');
+    const date = new Date(transaction.date).toLocaleDateString("ko-KR");
     if (!dailyTotals[date]) {
       dailyTotals[date] = { income: 0, pay: 0 };
     }
-    if (transaction.type === 'Income') {
+    if (transaction.type === "Income") {
       dailyTotals[date].income += parseFloat(transaction.price);
-    } else if (transaction.type === 'Pay') {
+    } else if (transaction.type === "Pay") {
       dailyTotals[date].pay += parseFloat(transaction.price);
     }
     return dailyTotals;
