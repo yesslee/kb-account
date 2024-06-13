@@ -35,8 +35,8 @@ export const useMemberStore = defineStore("memberStore", () => {
         } 
         try {
             const payload = { memberId, name, pw, email, gender};
-            const response = await axios.put(BASEURI + `/${id}`, payload)
-            if (response.data.status === "success") {
+            const response = await axios.put(BASEURI + `/${members}` + `/${id}`, payload)
+            if (response.status === 200) {
                 state.member = { id, memberId, name, pw, email, gender };
                 successCallback();
             } else {
