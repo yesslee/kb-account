@@ -2,6 +2,7 @@
   
   <div class="container">
     <Navigator></Navigator>
+    
     <router-view></router-view>
     <!-- <div class="row"> -->
     <!-- <div class="col"><FilterBar></FilterBar></div>
