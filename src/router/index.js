@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, isNavigationFailure } from "vue-router"
 // import { useAuthStore } from '@/stores/auth.js'
 
 import Login from "@/pages/Login.vue";
-import UserInfo from '@/pages/UserInfo.vue';
+import UserInfo from "@/pages/UserInfo.vue";
 import TransactionList from "@/pages/TransactionList.vue";
 import AddTransaction from "@/pages/AddTransaction.vue";
 import Calendar from "@/pages/Calendar.vue";
@@ -12,15 +12,15 @@ import NotFound from "@/pages/NotFound.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', name: 'login', component: Login },
-    { path: '/list', name: 'transactionList', component: TransactionList, meta: { requiresAuth: true } },
-    { path: '/list/add', name: 'addTransaction', component: AddTransaction, meta: { requiresAuth: true } },
-    { path: '/list/user', name: 'userInfo', component: UserInfo, meta: { requiresAuth: true } },
-    { path: '/summary', name: 'summary', component: Summary, meta: { requiresAuth: true } },
-    { path: '/calendar', name: 'calendar', component: Calendar, meta: { requiresAuth: true } },
-    { path: '/:paths(.*)*', name: 'NotFound', component: NotFound }
-  ]
-})
+    { path: "/", name: "login", component: Login },
+    { path: "/list", name: "transactionList", component: TransactionList, meta: { requiresAuth: true } },
+    { path: "/list/add", name: "addTransaction", component: AddTransaction, meta: { requiresAuth: true } },
+    { path: "/list/user", name: "userInfo", component: UserInfo, meta: { requiresAuth: true } },
+    { path: "/summary", name: "summary", component: Summary, meta: { requiresAuth: true } },
+    { path: "/calendar", name: "calendar", component: Calendar, meta: { requiresAuth: true } },
+    { path: "/:paths(.*)*", name: "NotFound", component: NotFound },
+  ],
+});
 
 // 라우터 가드 설정
 // router.beforeEach((to, from, next) => {
