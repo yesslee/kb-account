@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <div class="container-fluid px-4">
+  
+    <div class="content">
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-chart-area me-1"></i>
@@ -19,7 +19,7 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
     </div>
-</main>
+
 </template>
 
 <script>
