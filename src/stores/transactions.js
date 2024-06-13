@@ -52,6 +52,7 @@ export const useMemberStore = defineStore("memberStore", () => {
 export const useTransactionStore = defineStore("transactionStore", () => {
   const state = reactive({
     transactionList: [],
+    totalTransactionList: [],
   });
   
   const fetchTransactionList = async (memberId, date) => {
@@ -61,6 +62,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
         state.transactionList = response.data.filter(
           (transaction) => transaction.memberId === memberId && transaction.date.startsWith(date.substr(0, 7))
         );
+        state.totalTransactionList = response.data;
       } else {
         alert("데이터 조회 실패");
       }
