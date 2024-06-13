@@ -24,17 +24,17 @@
       "date": "2024-06-10 12:00",
       "price": "12000",
       "category": "술/유흥",
-      "title" : "역전할맥",
+      "title": "역전할맥",
       "type": "Pay"
     },
     {
-      "id": "2",
       "memberId": "dh1010a",
       "date": "2024-06-10 12:00",
-      "price": "12000",
+      "price": "120003",
+      "title": "외투2",
       "category": "쇼핑",
-      "title": "외투",
-      "type": "Pay"
+      "type": "Pay",
+      "id": "2"
     },
     {
       "memberId": "dh1010a",
@@ -69,8 +69,8 @@
       "price": "120020",
       "category": "건강",
       "type": "Pay",
-      "title" : "병원",
-      "id": 6
+      "title": "병원",
+      "id": "6"
     },
     {
       "memberId": "dh1010a",
@@ -78,8 +78,8 @@
       "price": "156484",
       "category": "식비",
       "type": "Pay",
-      "title" : "병원",
-      "id": 7
+      "title": "병원",
+      "id": "7"
     },
     {
       "memberId": "dh1010a",
@@ -87,8 +87,8 @@
       "price": "161948",
       "category": "카페",
       "type": "Pay",
-      "title" : "병원",
-      "id": 8
+      "title": "병원",
+      "id": "8"
     },
     {
       "memberId": "dh1010a",
@@ -96,8 +96,8 @@
       "price": "165452",
       "category": "건강",
       "type": "Pay",
-      "title" : "술/유흥",
-      "id": 6
+      "title": "술/유흥",
+      "id": "6"
     },
     {
       "memberId": "dh1010a",
@@ -105,8 +105,8 @@
       "price": "191884",
       "category": "건강",
       "type": "Pay",
-      "title" : "교통",
-      "id": 9
+      "title": "교통",
+      "id": "9"
     },
     {
       "memberId": "dh1010a",
@@ -114,8 +114,8 @@
       "price": "49982",
       "category": "건강",
       "type": "Pay",
-      "title" : "병원",
-      "id": 10
+      "title": "병원",
+      "id": "10"
     }
   ]
 }

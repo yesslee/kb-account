@@ -1,15 +1,14 @@
 <template>
   <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
   <br>
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <!-- FilterBar에서 발생한 이벤트를 처리 -->
+        <!-- FilterBar component to handle filtering -->
         <FilterBar @filter-category="filterCategory" @filter-delivery="filterDelivery" @filter-price-range="filterPriceRange"></FilterBar>
       </div>
       <div class="col-md-9">
-        <div class="list-header" style="width: 100%;">
+        <div class="list-header" style="width: 80%; margin: 0 auto;">
           <div class="list-header-left d-flex align-items-center">
             <p class="list-header-total mb-0 me-4 fs-3">전체 내역 {{ filteredTransactionList.length }}건</p>
           </div>
@@ -18,16 +17,27 @@
           <br>
           <div class="list-header-right d-flex align-items-center">
             <div class="d-flex align-items-center me-1">
-              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault">
-              <p class="list-header-money mb-0 me-1">수입 {{ formatNumber(totalIncome) }}</p>
+              <!-- <input
+                class="form-check-input me-1"
+                type="checkbox"
+                :checked="isIncomeChecked"
+                @change="handleIncomeCheckboxChange"
+                id="incomeBox"
+              /> -->
+              <p class="list-header-money mb-0 me-1">수입 {{formatNumber(totalIncome)}}</p>
             </div>
             <div class="d-flex align-items-center me-1">
-              <input class="form-check-input me-1" type="checkbox" value="" id="flexCheckDefault">
-              <p class="list-header-money mb-0" style="color: #e139c2">지출 {{ formatNumber(totalPay) }}</p>
+              <!-- <input
+                class="form-check-input me-1"
+                type="checkbox"
+                :checked="isPayChecked"
+                @change="handlePayCheckboxChange"
+                id="payBox"
+              /> -->
+              <p class="list-header-money mb-0" style="color: #E139C2">지출 {{formatNumber(totalPay)}}</p>
             </div>
           </div>
         </div>
-
         <div class="day-list">
           <div v-for="(item, date) in groupedTransactions" :key="date" class="day-list-item">
             <div class="day-list-header">
@@ -38,44 +48,72 @@
               </div>
             </div>
             <div class="transaction-list">
-              <TransactionItem v-for="transaction in item.transactions" :key="transaction.id" :transactionItem="transaction" />
+              <TransactionItem v-for="transaction in item.transactions" @click="showModal(transaction)" :key="transaction.id" :transactionItem="transaction" />
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <TransactionEditModal v-if="selectedTransaction != null" :show="showTransactionModal" :transactionItem="selectedTransaction" @sendClose="closeModal" />
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useTransactionStore } from '@/stores/transactions.js';
 import TransactionItem from '@/pages/TransactionItem.vue';
-import FilterBar from "@/pages/FilterBar.vue"
+import TransactionEditModal from '@/components/TransactionEditModal.vue';
+import FilterBar from "@/pages/FilterBar.vue";
 
+let showTransactionModal = ref(false);
+let selectedTransaction = ref(null);
+
+const showModal = (transactionData) => {
+  if (transactionData) {
+    selectedTransaction.value = { ...transactionData };
+    showTransactionModal.value = true;
+  }
+};
+
+const closeModal = () => {
+  showTransactionModal.value = false;
+  selectedTransaction.value = null;
+};
+
+const isIncomeChecked = ref(true);
+const isPayChecked = ref(true);
 const transactionStore = useTransactionStore();
 const transactionList = computed(() => transactionStore.transactionList);
 
+const totalIncome = computed(() => calculateTotalIncome(filteredTransactionList.value));
+const totalPay = computed(() => calculateTotalPay(filteredTransactionList.value));
+
+const handleIncomeCheckboxChange = () => {
+  isIncomeChecked.value = !isIncomeChecked.value;
+};
+
+const handlePayCheckboxChange = () => {
+  isPayChecked.value = !isPayChecked.value;
+};
+
+// Filter related state and methods
 const selectedCategories = ref([]);
 const selectedDelivery = ref('');
 const selectedPriceRange = ref([0, 1000000]);
 
-// 카테고리 필터 이벤트 처리
 const filterCategory = (categories) => {
   selectedCategories.value = categories;
 };
 
-// 입출금 필터 이벤트 처리
 const filterDelivery = (delivery) => {
   selectedDelivery.value = delivery;
 };
 
-// 금액 범위 필터 이벤트 처리
 const filterPriceRange = (range) => {
   selectedPriceRange.value = range;
 };
 
-// 필터링된 거래 목록을 계산
+// Filtered transaction list
 const filteredTransactionList = computed(() => {
   let filtered = transactionList.value;
   if (selectedCategories.value.length) {
@@ -90,13 +128,6 @@ const filteredTransactionList = computed(() => {
   return filtered;
 });
 
-// 필터링된 거래 목록의 총 수입 계산
-const totalIncome = computed(() => calculateTotalIncome(filteredTransactionList.value));
-
-// 필터링된 거래 목록의 총 지출 계산
-const totalPay = computed(() => calculateTotalPay(filteredTransactionList.value));
-
-// 거래 목록을 날짜별로 그룹화
 const groupedTransactions = computed(() => {
   const groups = groupByDate(filteredTransactionList.value);
   const dailyTotals = calculateDailyTotals(filteredTransactionList.value);
@@ -110,7 +141,6 @@ const groupedTransactions = computed(() => {
   }, {});
 });
 
-// 그룹화된 거래 목록을 정렬
 const sortedGroups = Object.keys(groupedTransactions)
   .sort((a, b) => new Date(b) - new Date(a))
   .reduce((sorted, date) => {
@@ -118,7 +148,38 @@ const sortedGroups = Object.keys(groupedTransactions)
     return sorted;
   }, {});
 
-// 총 수입 계산 함수
+watch([isIncomeChecked, isPayChecked], () => {
+  filteredTransactionList.value = computeFilteredTransactions(
+    groupedTransactions.value,
+    isIncomeChecked.value,
+    isPayChecked.value
+  );
+});
+
+function computeFilteredTransactions(groupedTransactions, isIncomeChecked, isPayChecked) {
+  if (isIncomeChecked === true && isPayChecked === true) {
+    return groupedTransactions;
+  } else if (isIncomeChecked === true) {
+    return Object.keys(groupedTransactions).reduce((filtered, date) => {
+      filtered[date] = {
+        ...groupedTransactions[date],
+        transactions: groupedTransactions[date].income,
+      };
+      return filtered;
+    }, {});
+  } else if (isPayChecked === true) {
+    return Object.keys(groupedTransactions).reduce((filtered, date) => {
+      filtered[date] = {
+        ...groupedTransactions[date],
+        transactions: groupedTransactions[date].pay,
+      };
+      return filtered;
+    }, {});
+  } else {
+    return {};
+  }
+}
+
 function calculateTotalIncome(transactions) {
   let totalIncome = 0;
   for (let i = 0; i < transactions.length; i++) {
@@ -129,7 +190,6 @@ function calculateTotalIncome(transactions) {
   return totalIncome;
 }
 
-// 총 지출 계산 함수
 function calculateTotalPay(transactions) {
   let totalPay = 0;
   for (let i = 0; i < transactions.length; i++) {
@@ -140,12 +200,10 @@ function calculateTotalPay(transactions) {
   return totalPay;
 }
 
-// 숫자를 형식화하는 함수 추가
 function formatNumber(value) {
   return value.toLocaleString();
 }
 
-// 거래 목록을 날짜별로 그룹화하는 함수
 function groupByDate(transactionList) {
   return transactionList.reduce((groups, transaction) => {
     const date = new Date(transaction.date).toLocaleDateString('ko-KR');
@@ -157,7 +215,6 @@ function groupByDate(transactionList) {
   }, {});
 }
 
-// 일별 총 수입 및 지출을 계산하는 함수
 function calculateDailyTotals(transactions) {
   return transactions.reduce((dailyTotals, transaction) => {
     const date = new Date(transaction.date).toLocaleDateString('ko-KR');
@@ -188,44 +245,37 @@ function calculateDailyTotals(transactions) {
   color: black;
   font-weight: bold;
 }
-
 .list-header-left {
   display: flex;
   align-items: center;
   color: black;
   font-weight: bold;
 }
-
 .list-header-right {
   display: flex;
   align-items: center;
-  color: #56abd8;
+  color: #56ABD8;
   font-weight: bold;
 }
-
 .list-header-total {
   margin: 0 10px;
   font-size: 100px;
 }
-
 .list-header-money {
   margin: 0 10px;
 }
-
 .day-list {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .day-list-item {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #E0E0E0;
   padding: 12px 0;
-  width: 100%;
+  width: 70%;
 }
-
 .day-list-header {
   display: flex;
   justify-content: space-between;
@@ -233,32 +283,29 @@ function calculateDailyTotals(transactions) {
   margin-bottom: 0px;
   width: 100%;
 }
-
 .day-list-date {
   font-size: 20px;
   font-weight: bold;
+  /* margin-left: 200px; */
 }
-
 .day-list-totals {
   display: flex;
   align-items: center;
-  color: #56abd8;
+  color: #56ABD8;
   font-size: 16px;
   width: 30%;
   justify-content: flex-end;
+  /* margin-right: 200px; */
 }
-
 .day-list-totals > * {
   margin-left: 12px;
 }
-
 .transaction-list {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
-
 .transaction-list {
   display: flex;
   flex-direction: column;
