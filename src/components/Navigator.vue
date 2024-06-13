@@ -25,11 +25,48 @@
 </template>
 
 <script>
-import { ref, inject } from 'vue';
+// import { ref, inject } from 'vue';
+
+// export default {
+//   name: 'Navigator',
+//   setup() {
+//     const month = ref(new Date().getMonth() + 1); // 현재 월로 초기화
+
+//     function previousMonth() {
+//       if (month.value > 1) {
+//         month.value -= 1;
+//       } else {
+//         month.value = 12; // 1월에서 이전 월을 클릭하면 12월로 이동
+//       }
+//     }
+
+//     function nextMonth() {
+//       if (month.value < 12) {
+//         month.value += 1;
+//       } else {
+//         month.value = 1; // 12월에서 다음 월을 클릭하면 1월로 이동
+//       }
+//     }
+
+//     return {
+//       month,
+//       previousMonth,
+//       nextMonth
+//     };
+//   }
+// }
+
+import { ref, inject, watch } from 'vue';
 
 export default {
   name: 'Navigator',
-  setup() {
+  props: {
+    fetchTransactions: {
+      type: Function,
+      required: true
+    }
+  },
+  setup(props) {
     const month = ref(new Date().getMonth() + 1); // 현재 월로 초기화
 
     function previousMonth() {
@@ -38,6 +75,7 @@ export default {
       } else {
         month.value = 12; // 1월에서 이전 월을 클릭하면 12월로 이동
       }
+      props.fetchTransactions(month.value);
     }
 
     function nextMonth() {
@@ -46,7 +84,13 @@ export default {
       } else {
         month.value = 1; // 12월에서 다음 월을 클릭하면 1월로 이동
       }
+      props.fetchTransactions(month.value);
     }
+
+    // Watch for changes in the month and call fetchTransactions
+    watch(month, (newMonth) => {
+      props.fetchTransactions(newMonth);
+    });
 
     return {
       month,

@@ -39,10 +39,10 @@ defineProps({
 function getCategoryColor(category) {
     // 카테고리에 따른 배경색 매핑
     const categoryColors = {
-      '술': '#4CAF50',
+      '식비': '#4CAF50',
       '교통': '#32d3e5',
       '생활': '#2196F3',
-      '건강': '#E91E63',
+      '카페': '#E91E63',
       '쇼핑' : '#ffaae8',
       '용돈' : '#eded1b'
       // 추가적인 카테고리와 색상 매핑
