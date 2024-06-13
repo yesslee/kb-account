@@ -14,7 +14,6 @@
     <div class="filter-section">
       <h3>금액 범위</h3>
       <br>
-      <!-- vue-slider를 사용하여 금액 범위를 선택 -->
       <VueSlider v-model="localPriceRange" :min="0" :max="1000000" :interval="1000" />
     </div>
     
@@ -26,7 +25,6 @@
       </div>
     </div>
     
-    <!-- Apply 버튼 클릭 시 선택된 필터를 부모 컴포넌트로 전달 -->
     <button class="apply-button" @click="applyFilters">Apply</button>
   </div>
 </template>
@@ -36,16 +34,13 @@ import { ref } from 'vue';
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 
-// props 및 emit 정의
 const props = defineProps();
 const emit = defineEmits(['filter-category', 'filter-delivery', 'filter-price-range']);
 
-// 로컬 상태 정의
 const localSelectedSort = ref([]);
 const localPriceRange = ref([0, 1000000]);
 const localSelectedDelivery = ref('');
 
-// 카테고리 필터 토글
 function toggleSort(sort) {
   const index = localSelectedSort.value.indexOf(sort);
   if (index > -1) {
@@ -55,7 +50,6 @@ function toggleSort(sort) {
   }
 }
 
-// 입출금 필터 선택/해제
 function selectDelivery(delivery) {
   if (localSelectedDelivery.value === delivery) {
     localSelectedDelivery.value = '';
@@ -64,7 +58,6 @@ function selectDelivery(delivery) {
   }
 }
 
-// Apply 버튼 클릭 시 모든 필터를 부모 컴포넌트로 전달
 function applyFilters() {
   emit('filter-category', localSelectedSort.value);
   emit('filter-delivery', localSelectedDelivery.value);
@@ -79,33 +72,33 @@ function applyFilters() {
 
 <style scoped>
 .filter-bar {
-  padding: 20px;
+  padding: 10px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 300px; /* 최대 너비를 설정하여 세로 정렬 유지 */
-  position: sticky; /* FilterBar를 고정 위치로 설정 */
-  top: 120px; /* 상단에서 20px 떨어진 위치에 고정 */
+  max-width: 250px; /* 크기를 줄이기 위해 max-width를 줄임 */
+  position: sticky;
+  top: 120px;
 }
 
 .filter-section {
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* 섹션 간 간격 줄이기 */
 }
 
 .filter-section h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px; /* 글꼴 크기 줄이기 */
+  margin-bottom: 8px; /* 제목과 옵션 간 간격 줄이기 */
   font-weight: bold;
 }
 
 .filter-options {
   display: flex;
-  flex-direction: column; /* 세로 정렬 */
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px; /* 옵션 간 간격 줄이기 */
 }
 
 .filter-options button {
-  padding: 10px 20px;
+  padding: 8px 16px; /* 버튼 패딩 줄이기 */
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -117,22 +110,16 @@ function applyFilters() {
   background-color: #e7f3ff;
 }
 
-.price-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
 .apply-button {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 8px; /* 버튼 패딩 줄이기 */
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px; /* 글꼴 크기 줄이기 */
   text-align: center;
 }
 </style>
