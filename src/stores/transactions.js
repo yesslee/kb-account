@@ -72,9 +72,28 @@ export const useTransactionStore = defineStore("transactionStore", () => {
   };
 
   const addTransaction = async ({ memberId, date, price, title, category, type }, successCallback) => {
-    if (!memberId || memberId.trim() === "") {
-      alert("멤버 ID는 반드시 입력해야 합니다");
-      return;
+      if (!memberId || memberId.trim()==="") {
+          alert('멤버 ID는 반드시 입력해야 합니다');
+          return;
+      } 
+      if (!date || date.trim()==="" || !price || price.trim()=="" || 
+      !category || category.trim()=="" || !type || type.trim()=="") {
+          alert('세부 항목은 반드시 입력해야 합니다');
+          return;
+
+      }
+      try {
+          const payload = { memberId, date, price, title, category, type};
+          const response = await axios.post(BASEURI + `/${transaction}`, payload)
+          if (response.status === 201) {
+              state.todoList.push({memberId, date, price, title,category, type })
+              successCallback();
+            } else {
+              alert('거래내역 추가 실패 : ' + response.data.message);
+            }
+      } catch(error) {
+          alert('에러발생 :' + error);
+      }
     }
     if (
       !date ||
@@ -103,52 +122,45 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       console.log(error);
     }
   };
-
   const updateTransaction = async ({ id, memberId, date, price, title, category, type }, successCallback) => {
-    if (!memberId || memberId.trim() === "") {
-      alert("멤버 ID는 반드시 입력해야 합니다");
-      return;
-    }
-    if (
-      !date ||
-      date.trim() === "" ||
-      !price ||
-      price.trim() == "" ||
-      !category ||
-      category.trim() == "" ||
-      !type ||
-      type.trim() == ""
-    ) {
-      alert("세부 항목은 반드시 입력해야 합니다");
-      return;
-    }
-    try {
-      const payload = { memberId, date, price, title, category, type };
-      const response = await axios.put(BASEURI + `/${transaction}` + `/${id}`, payload);
-      if (response.status === 200) {
-        let index = state.transactionList.findIndex((transaction) => transaction.id === id);
-        state.transactionList[index] = { id, memberId, date, price, title, category, type };
-        successCallback();
-      } else {
-        alert("거래내역 변경 실패 : " + response.data.status);
+      if (!memberId || memberId.trim()==="") {
+          alert('멤버 ID는 반드시 입력해야 합니다');
+          return;
+      } 
+      if (!date || date.trim()==="" || !price || price.trim()=="" || 
+      !category || category.trim()=="" || !type || type.trim()=="") {
+          alert('세부 항목은 반드시 입력해야 합니다');
+          return;
+
       }
-    } catch (error) {
-      alert("에러발생 :" + error);
+      try {
+          const payload = { memberId, date, price, title, category, type };
+          const response = await axios.put(BASEURI + `/${transaction}` + `/${id}`, payload);
+          if (response.status === 200) {
+              let index = state.transactionList.findIndex((transaction) => transaction.id === id);
+              state.transactionList[index] = { id, memberId, date, price, title, category, type };
+              successCallback();
+          } else {
+              alert('거래내역 변경 실패 : ' + response.data.status);
+          }
+      } catch(error) {
+          alert('에러발생 :' + error);
+      }
     }
   };
-
   const deleteTransaction = async (id, successCallback) => {
-    try {
-      const response = await axios.delete(BASEURI + `/${transaction}` + `/${id}`);
-      if (response.status === 200) {
-        let index = state.transactionList.findIndex((transaction) => transaction.id === id);
-        state.transactionList.splice(index, 1);
-        successCallback();
-      } else {
-        alert("거래내역 삭제 실패 : " + response.data.message);
+      try {
+          const response = await axios.delete(BASEURI + `/${transaction}` + `/${id}`)
+          if (response.status === 200) {
+              let index = state.transactionList.findIndex((transaction) => transaction.id === id);
+              state.transactionList.splice(index, 1);
+              successCallback();
+            } else {
+              alert('거래내역 삭제 실패 : ' + response.data.message);
+            }
+      } catch(error) {
+          alert('에러발생 :' + error);
       }
-    } catch (error) {
-      alert("에러발생 :" + error);
     }
   };
 

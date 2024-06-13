@@ -1,7 +1,7 @@
 {
   "members": [
     {
-      "id": "1",
+      "id": 1,
       "memberId": "dh1010a",
       "name": "Paek",
       "pw": "1234",
@@ -9,7 +9,7 @@
       "gender": "Male"
     },
     {
-      "id": "2",
+      "id": 2,
       "memberId": "dh1010a2",
       "name": "kim",
       "pw": "1234",
@@ -25,7 +25,7 @@
       "title": "역전할맥",
       "category": "식비",
       "type": "Pay",
-      "id": "1"
+      "id": 1
     },
     {
       "memberId": "dh1010a",
@@ -34,7 +34,7 @@
       "title": "외투",
       "category": "쇼핑",
       "type": "Pay",
-      "id": "2"
+      "id": 2
     },
     {
       "memberId": "dh1010a",
@@ -43,7 +43,7 @@
       "category": "용돈",
       "type": "Income",
       "title": "용돈",
-      "id": "3"
+      "id": 3
     },
     {
       "memberId": "dh1010a",
@@ -52,7 +52,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "택시",
-      "id": "4"
+      "id": 4
     },
     {
       "memberId": "dh1010a",
@@ -61,7 +61,7 @@
       "category": "생활",
       "type": "Pay",
       "title": "마트",
-      "id": "5"
+      "id": 5
     },
     {
       "memberId": "dh1010a",
@@ -70,7 +70,7 @@
       "title": "역전할맥",
       "category": "생활",
       "type": "Pay",
-      "id": "6"
+      "id": 6
     },
     {
       "memberId": "dh1010a",
@@ -79,7 +79,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "병원",
-      "id": "7"
+      "id": 7
     },
     {
       "memberId": "dh1010a",
@@ -88,7 +88,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "병원",
-      "id": "8"
+      "id": 8
     },
     {
       "memberId": "dh1010a",
@@ -97,7 +97,7 @@
       "title": "교통",
       "category": "교통",
       "type": "Pay",
-      "id": "9"
+      "id": 9
     },
     {
       "memberId": "dh1010a",
@@ -106,7 +106,7 @@
       "category": "건강",
       "type": "Pay",
       "title": "병원",
-      "id": "10"
+      "id": 10
     },
     {
       "memberId": "dh1010a",
@@ -115,7 +115,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "아침 식사",
-      "id": "11"
+      "id": 11
     },
     {
       "memberId": "dh1010a",
@@ -124,7 +124,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "아침 커피",
-      "id": "12"
+      "id": 12
     },
     {
       "memberId": "dh1010a",
@@ -133,7 +133,7 @@
       "category": "쇼핑",
       "type": "Pay",
       "title": "책 구입",
-      "id": "13"
+      "id": 13
     },
     {
       "memberId": "dh1010a",
@@ -142,7 +142,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "버스 요금",
-      "id": "14"
+      "id": 14
     },
     {
       "memberId": "dh1010a",
@@ -151,7 +151,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "점심 식사",
-      "id": "15"
+      "id": 15
     },
     {
       "memberId": "dh1010a",
@@ -160,7 +160,7 @@
       "category": "생활",
       "type": "Pay",
       "title": "세탁비",
-      "id": "16"
+      "id": 16
     },
     {
       "memberId": "dh1010a",
@@ -169,7 +169,7 @@
       "category": "용돈",
       "type": "Income",
       "title": "주머니 돈",
-      "id": "17"
+      "id": 17
     },
     {
       "memberId": "dh1010a",
@@ -178,7 +178,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "아침 식사",
-      "id": "18"
+      "id": 18
     },
     {
       "memberId": "dh1010a",
@@ -187,7 +187,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "아침 커피",
-      "id": "19"
+      "id": 19
     },
     {
       "memberId": "dh1010a",
@@ -196,7 +196,7 @@
       "category": "쇼핑",
       "type": "Pay",
       "title": "옷 구입",
-      "id": "20"
+      "id": 20
     },
     {
       "memberId": "dh1010a",
@@ -205,7 +205,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "지하철 요금",
-      "id": "21"
+      "id": 21
     },
     {
       "memberId": "dh1010a",
@@ -214,7 +214,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "점심 식사",
-      "id": "22"
+      "id": 22
     },
     {
       "memberId": "dh1010a",
@@ -223,7 +223,7 @@
       "category": "생활",
       "type": "Pay",
       "title": "청소 용품",
-      "id": "23"
+      "id": 23
     },
     {
       "memberId": "dh1010a",
@@ -232,7 +232,7 @@
       "category": "용돈",
       "type": "Income",
       "title": "현금 선물",
-      "id": "24"
+      "id": 24
     },
     {
       "memberId": "dh1010a",
@@ -241,7 +241,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "아침 식사",
-      "id": "25"
+      "id": 25
     },
     {
       "memberId": "dh1010a",
@@ -250,7 +250,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "아침 커피",
-      "id": "26"
+      "id": 26
     },
     {
       "memberId": "dh1010a",
@@ -259,7 +259,7 @@
       "category": "쇼핑",
       "type": "Pay",
       "title": "신발 구입",
-      "id": "27"
+      "id": 27
     },
     {
       "memberId": "dh1010a",
@@ -268,7 +268,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "택시 요금",
-      "id": "28"
+      "id": 28
     },
     {
       "memberId": "dh1010a",
@@ -277,7 +277,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "점심 식사",
-      "id": "29"
+      "id": 29
     },
     {
       "memberId": "dh1010a",
@@ -286,7 +286,7 @@
       "category": "생활",
       "type": "Pay",
       "title": "주방 용품",
-      "id": "30"
+      "id": 30
     },
     {
       "memberId": "dh1010a",
@@ -295,7 +295,7 @@
       "category": "용돈",
       "type": "Income",
       "title": "추가 용돈",
-      "id": "31"
+      "id": 31
     },
     {
       "memberId": "dh1010a",
@@ -304,7 +304,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "아침 식사",
-      "id": "32"
+      "id": 32
     },
     {
       "memberId": "dh1010a",
@@ -313,7 +313,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "아침 커피",
-      "id": "33"
+      "id": 33
     },
     {
       "memberId": "dh1010a",
@@ -322,7 +322,7 @@
       "category": "쇼핑",
       "type": "Pay",
       "title": "스포츠 용품",
-      "id": "34"
+      "id": 34
     },
     {
       "memberId": "dh1010a",
@@ -331,7 +331,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "버스 요금",
-      "id": "35"
+      "id": 35
     },
     {
       "memberId": "dh1010a",
@@ -340,7 +340,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "점심 식사",
-      "id": "36"
+      "id": 36
     },
     {
       "memberId": "dh1010a",
@@ -349,7 +349,7 @@
       "category": "생활",
       "type": "Pay",
       "title": "화장품",
-      "id": "37"
+      "id": 37
     },
     {
       "memberId": "dh1010a",
@@ -358,7 +358,7 @@
       "category": "용돈",
       "type": "Income",
       "title": "보너스",
-      "id": "38"
+      "id": 38
     },
     {
       "memberId": "dh1010a",
@@ -367,7 +367,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "아침 식사",
-      "id": "39"
+      "id": 39
     },
     {
       "memberId": "dh1010a",
@@ -376,7 +376,7 @@
       "category": "카페",
       "type": "Pay",
       "title": "아침 커피",
-      "id": "40"
+      "id": 40
     },
     {
       "memberId": "dh1010a",
@@ -385,7 +385,7 @@
       "category": "쇼핑",
       "type": "Pay",
       "title": "전자 제품",
-      "id": "41"
+      "id": 41
     },
     {
       "memberId": "dh1010a",
@@ -394,7 +394,7 @@
       "category": "교통",
       "type": "Pay",
       "title": "지하철 요금",
-      "id": "42"
+      "id": 42
     },
     {
       "memberId": "dh1010a",
@@ -403,7 +403,7 @@
       "category": "식비",
       "type": "Pay",
       "title": "점심 식사",
-      "id": "43"
+      "id": 43
     },
     {
       "memberId": "dh1010a",
@@ -566,42 +566,6 @@
       "type": "Pay",
       "title": "아침 커피",
       "id": "61"
-    },
-    {
-      "id": "beca",
-      "memberId": "dh1010a",
-      "date": "2024-06-12",
-      "price": "123",
-      "title": "123",
-      "category": "교통",
-      "type": "Pay"
-    },
-    {
-      "id": "0322",
-      "memberId": "dh1010a",
-      "date": "2024-06-05",
-      "price": "123",
-      "title": "123",
-      "category": "식비",
-      "type": "Income"
-    },
-    {
-      "id": "3777",
-      "memberId": "dh1010a",
-      "date": "2024-06-11",
-      "price": "123",
-      "title": "123",
-      "category": "식비",
-      "type": "Pay"
-    },
-    {
-      "id": "eed3",
-      "memberId": "dh1010a",
-      "date": "2024-06-04",
-      "price": "123",
-      "title": "123",
-      "category": "교육/학습",
-      "type": "Income"
     }
   ]
 }
