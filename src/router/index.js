@@ -46,9 +46,8 @@ const router = createRouter({
 
 router.afterEach((to, from, failure) => {
   if (isNavigationFailure(failure)) {
-    console.log("@@ 내비게이션 중단: ", failure)
+    console.log("@@ 내비게이션 중단: ", failure);
   }
-})
-
+});
 
 export default router;
