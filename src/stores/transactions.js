@@ -83,9 +83,11 @@ export const useTransactionStore = defineStore("transactionStore", () => {
     }
     try {
       const payload = { memberId, date, price, title, category, type };
+      console.log("payload",payload);
       const response = await axios.post(BASEURI + `/${transaction}`, payload)
+      console.log("test",response.status)
       if (response.status === 201) {
-        state.todoList.push({ memberId, date, price, title, category, type })
+        state.totalTransactionList.push({ memberId, date, price, title, category, type })
         successCallback();
       } else {
         alert('거래내역 추가 실패 : ' + response.data.message);
@@ -135,5 +137,6 @@ export const useTransactionStore = defineStore("transactionStore", () => {
     }
   }
   const transactionList = computed(() => state.transactionList);
-  return { transactionList, fetchTransactionList, addTransaction, deleteTransaction, updateTransaction };
+  const totalTransactionList = computed(()=>state.totalTransactionList);
+  return { transactionList,totalTransactionList, fetchTransactionList, addTransaction, deleteTransaction, updateTransaction };
 });

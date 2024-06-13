@@ -3,7 +3,7 @@
   <nav class="navbar navbar-light">
     <div class="navbar-content">
       <div class="navbar-left">
-        <a href="#">KB-ACCOUNT</a>
+        <a href="/">KB-ACCOUNT</a>
       </div>
       <div class="navbar-center">
         <img
@@ -106,6 +106,7 @@ export default {
     // Watch for changes in the month and call fetchTransactions
     watch(month, (newMonth) => {
       props.fetchTransactions(newMonth);
+      
     });
 
     return {

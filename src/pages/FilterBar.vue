@@ -1,44 +1,52 @@
 <template>
   <div class="filter-bar">
     <div class="filter-section">
-      <h3>카테고리 조회</h3>
+      <h3>카테고리 선택</h3>
       <div class="filter-options">
-        <button :class="{'selected': localSelectedSort.includes('식비')}" @click="toggleSort('식비')">식비</button>
-        <button :class="{'selected': localSelectedSort.includes('카페')}" @click="toggleSort('카페')">카페</button>
-        <button :class="{'selected': localSelectedSort.includes('생활')}" @click="toggleSort('생활')">생활</button>
-        <button :class="{'selected': localSelectedSort.includes('교통')}" @click="toggleSort('교통')">교통</button>
-        <button :class="{'selected': localSelectedSort.includes('쇼핑')}" @click="toggleSort('쇼핑')">쇼핑</button>
+        <div class="first">
+          <button :class="{'selected': localSelectedSort.includes('식비')}" @click="toggleSort('식비')">식비</button>
+          <button :class="{'selected': localSelectedSort.includes('카페')}" @click="toggleSort('카페')">카페</button>
+          <button :class="{'selected': localSelectedSort.includes('생활')}" @click="toggleSort('생활')">생활</button>
+          <button :class="{'selected': localSelectedSort.includes('교통')}" @click="toggleSort('교통')">교통</button>
+        </div>
+        <div class="second">        
+          <button :class="{'selected': localSelectedSort.includes('쇼핑')}" @click="toggleSort('쇼핑')">쇼핑</button>
+          <button :class="{'selected': localSelectedSort.includes('용돈')}" @click="toggleSort('용돈')">용돈</button>
+          <button :class="{'selected': localSelectedSort.includes('여행/숙박')}" @click="toggleSort('여행/숙박')">여행/숙박</button>
+          <button :class="{'selected': localSelectedSort.includes('건강')}" @click="toggleSort('건강')">건강</button>
+        </div>
+
       </div>
     </div>
     
     <div class="filter-section">
-      <h3>금액 범위</h3>
+      <h3>금액 범위 설정</h3>
       <br>
       <VueSlider v-model="localPriceRange" :min="0" :max="1000000" :interval="1000" />
     </div>
     
     <div class="filter-section">
-      <h3>입/출금 조회</h3>
+      <h3>수입 | 지출 조회</h3>
       <div class="filter-options">
-        <button :class="{'selected': localSelectedDelivery === 'Income'}" @click="selectDelivery('Income')">입금</button>
-        <button :class="{'selected': localSelectedDelivery === 'Pay'}" @click="selectDelivery('Pay')">출금</button>
+        <button :class="{'selected': localSelectedDelivery === 'Income'}" @click="selectDelivery('Income')">수입</button>
+        <button :class="{'selected': localSelectedDelivery === 'Pay'}" @click="selectDelivery('Pay')">지출</button>
       </div>
     </div>
     
-    <button class="apply-button" @click="applyFilters">Apply</button>
+    <button class="apply-button" @click="applyFilters">Search!</button>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import VueSlider from 'vue-slider-component';
-import 'vue-slider-component/theme/default.css';
+import 'vue-slider-component/theme/antd.css';
 
 const props = defineProps();
 const emit = defineEmits(['filter-category', 'filter-delivery', 'filter-price-range']);
 
 const localSelectedSort = ref([]);
-const localPriceRange = ref([0, 1000000]);
+const localPriceRange = ref([0, 100000]);
 const localSelectedDelivery = ref('');
 
 function toggleSort(sort) {
@@ -97,8 +105,27 @@ function applyFilters() {
   gap: 8px; /* 옵션 간 간격 줄이기 */
 }
 
-.filter-options button {
-  padding: 8px 16px; /* 버튼 패딩 줄이기 */
+.filter-options .first button {
+  padding: 4px 4px; /* 버튼 패딩 줄이기 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin : 4px;
+  width : 100px;
+}
+.filter-options .second button {
+  padding: 4px 4px; /* 버튼 패딩 줄이기 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin : 4px;
+  width : 100px;
+}
+
+.filter-options  button {
+  padding: 4px 4px; /* 버튼 패딩 줄이기 */
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;

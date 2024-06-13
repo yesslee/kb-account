@@ -62,7 +62,7 @@ const newTransaction = ref({
   title: "",
   category: "",
   // memo: "",
-  type: "", // 초기값을 빈 문자열로 설정
+  type: '', // 초기값을 빈 문자열로 설정
 });
 
 const transactionStore = useTransactionStore();
@@ -80,7 +80,7 @@ const cancel = () => {
 
 const addTransaction = async () => {
   newTransaction.memberId = "dh1010a";
-  console.log(newTransaction.value.date);
+  console.log("test2",newTransaction.value);
   addTransactionToStore(newTransaction.value, () => {
     router.push("/list");
   });
