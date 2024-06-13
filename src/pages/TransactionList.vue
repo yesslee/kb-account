@@ -8,7 +8,7 @@
         <FilterBar @filter-category="filterCategory" @filter-delivery="filterDelivery" @filter-price-range="filterPriceRange"></FilterBar>
       </div>
       <div class="col-md-9">
-        <div class="list-header" style="width: 80%; margin: 0 auto;">
+        <div class="list-header" style="width: 100%; margin: 0 auto;">
           <div class="list-header-left d-flex align-items-center">
             <p class="list-header-total mb-0 me-4 fs-3">전체 내역 {{ filteredTransactionList.length }}건</p>
           </div>
@@ -17,23 +17,9 @@
           <br>
           <div class="list-header-right d-flex align-items-center">
             <div class="d-flex align-items-center me-1">
-              <!-- <input
-                class="form-check-input me-1"
-                type="checkbox"
-                :checked="isIncomeChecked"
-                @change="handleIncomeCheckboxChange"
-                id="incomeBox"
-              /> -->
               <p class="list-header-money mb-0 me-1">수입 {{formatNumber(totalIncome)}}</p>
             </div>
             <div class="d-flex align-items-center me-1">
-              <!-- <input
-                class="form-check-input me-1"
-                type="checkbox"
-                :checked="isPayChecked"
-                @change="handlePayCheckboxChange"
-                id="payBox"
-              /> -->
               <p class="list-header-money mb-0" style="color: #E139C2">지출 {{formatNumber(totalPay)}}</p>
             </div>
           </div>
@@ -244,23 +230,26 @@ function calculateDailyTotals(transactions) {
   margin-bottom: 15px;
   color: black;
   font-weight: bold;
+  width: 100%; /* 기존 width가 지정되지 않은 상태에서 100%로 설정 */
 }
-.list-header-left {
+
+.list-header-left,
+.list-header-right {
   display: flex;
   align-items: center;
   color: black;
   font-weight: bold;
 }
+
 .list-header-right {
-  display: flex;
-  align-items: center;
   color: #56ABD8;
-  font-weight: bold;
 }
+
 .list-header-total {
   margin: 0 10px;
-  font-size: 100px;
+  font-size: 24px; /* 크기를 조정하여 더 잘 맞도록 함 */
 }
+
 .list-header-money {
   margin: 0 10px;
 }
@@ -274,7 +263,7 @@ function calculateDailyTotals(transactions) {
   flex-direction: column;
   border-bottom: 1px solid #E0E0E0;
   padding: 12px 0;
-  width: 70%;
+  width: 100%; /* 기존 70%에서 100%로 변경 */
 }
 .day-list-header {
   display: flex;
