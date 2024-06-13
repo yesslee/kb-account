@@ -3,21 +3,37 @@
     <nav class="navbar navbar-light">
       <div class="navbar-content">
         <div class="navbar-left">
-          <a>KB-ACCOUNT</a>
+          <a href="#">KB-ACCOUNT</a>
         </div>
         <div class="navbar-center">
-          <img src="../img/left_button.png" class="nav-icon" @click="previousMonth">
+          <img
+            src="../img/left_button.png"
+            class="nav-icon"
+            @click="previousMonth"
+          />
           <div class="month-year">
             <a>{{ month }}월</a>
             <a>2024</a>
           </div>
-          <img src="../img/right_button.png" class="nav-icon" @click="nextMonth">
+          <img
+            src="../img/right_button.png"
+            class="nav-icon"
+            @click="nextMonth"
+          />
         </div>
         <div class="navbar-right">
-          <img src="../img/payment_detail.png" class="nav-icon">
-          <img src="../img/graph_button.png" class="nav-icon">
-          <img src="../img/calendar_button.png" class="nav-icon">
-          <img src="../img/profile.png" class="nav-icon">
+          <router-link class="nav-link" to="/list"
+            ><img src="../img/payment_detail.png" class="nav-icon"
+          /></router-link>
+          <router-link class="nav-link" to="/summary"
+            ><img src="../img/graph_button.png" class="nav-icon"
+          /></router-link>
+          <router-link class="nav-link" to="/calendar"
+            ><img src="../img/calendar_button.png" class="nav-icon"
+          /></router-link>
+          <router-link class="nav-link" to="/list/user"
+            ><img src="../img/profile.png" class="nav-icon"
+          /></router-link>
         </div>
       </div>
     </nav>
@@ -95,10 +111,10 @@ export default {
     return {
       month,
       previousMonth,
-      nextMonth
+      nextMonth,
     };
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
