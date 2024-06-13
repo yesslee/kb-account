@@ -22,12 +22,12 @@
       </div>
       <div class="form-group">
         <label for="price">금액</label>
-        <input v-model="newTransaction.price" type="number" id="price" required />
+        <input v-model="newTransaction.price" type="text" id="price" required />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="memo">메모</label>
         <input v-model="newTransaction.memo" type="text" id="memo" required />
-      </div>
+      </div> -->
       <div class="form-group">
         <label>유형</label>
         <div class="slide-button">
@@ -53,15 +53,20 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { useTransactionStore } from "@/stores/transactions";
 
 const newTransaction = ref({
+  memberId: "dh1010a",
   date: "",
-  category: "",
-  title: "",
   price: "",
-  memo: "",
+  title: "",
+  category: "",
+  // memo: "",
   type: "", // 초기값을 빈 문자열로 설정
 });
+
+const transactionStore = useTransactionStore();
+const addTransactionToStore = transactionStore.addTransaction;
 
 const router = useRouter();
 
@@ -74,21 +79,11 @@ const cancel = () => {
 };
 
 const addTransaction = async () => {
-  try {
-    await axios.post("http://localhost:3001/transactionList", newTransaction.value);
-    // Reset the form fields after successful submission
-    newTransaction.value = {
-      date: "",
-      category: "",
-      title: "",
-      price: "",
-      memo: "",
-      type: "", // 초기값을 빈 문자열로 설정
-    };
+  newTransaction.memberId = "dh1010a";
+  console.log(newTransaction.value.date);
+  addTransactionToStore(newTransaction.value, () => {
     router.push("/list");
-  } catch (error) {
-    console.error("Failed to add transaction:", error);
-  }
+  });
 };
 </script>
 

@@ -31,6 +31,7 @@
 
 <script>
 import { ref, computed, onMounted } from "vue";
+import { useTransactionStore } from "@/stores/transactions.js";
 import axios from "axios";
 
 export default {
@@ -40,17 +41,8 @@ export default {
     const dayNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
     const monthNames = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
-    const transactionsUrl = "http://localhost:3001/transactionList";
-    const transactions = ref([]);
-
-    onMounted(async () => {
-      try {
-        const response = await axios.get(transactionsUrl);
-        transactions.value = response.data;
-      } catch (error) {
-        console.error("Failed to fetch transactions:", error);
-      }
-    });
+    const transactionStore = useTransactionStore();
+    const transactions = computed(() => transactionStore.transactionList);
 
     const weeks = computed(() => {
       const startOfMonth = new Date(currentYear.value, currentMonth.value, 1);
