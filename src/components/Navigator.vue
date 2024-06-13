@@ -1,43 +1,43 @@
 <template>
-  <div class="main-container">
-    <nav class="navbar navbar-light">
-      <div class="navbar-content">
-        <div class="navbar-left">
-          <a href="#">KB-ACCOUNT</a>
-        </div>
-        <div class="navbar-center">
-          <img
-            src="../img/left_button.png"
-            class="nav-icon"
-            @click="previousMonth"
-          />
-          <div class="month-year">
-            <a>{{ month }}월</a>
-            <a>2024</a>
-          </div>
-          <img
-            src="../img/right_button.png"
-            class="nav-icon"
-            @click="nextMonth"
-          />
-        </div>
-        <div class="navbar-right">
-          <router-link class="nav-link" to="/list"
-            ><img src="../img/payment_detail.png" class="nav-icon"
-          /></router-link>
-          <router-link class="nav-link" to="/summary"
-            ><img src="../img/graph_button.png" class="nav-icon"
-          /></router-link>
-          <router-link class="nav-link" to="/calendar"
-            ><img src="../img/calendar_button.png" class="nav-icon"
-          /></router-link>
-          <router-link class="nav-link" to="/list/user"
-            ><img src="../img/profile.png" class="nav-icon"
-          /></router-link>
-        </div>
+  <!-- <div class="main-container"> -->
+  <nav class="navbar navbar-light">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <a href="#">KB-ACCOUNT</a>
       </div>
-    </nav>
-  </div>
+      <div class="navbar-center">
+        <img
+          src="../img/left_button.png"
+          class="nav-icon"
+          @click="previousMonth"
+        />
+        <div class="month-year">
+          <a>{{ month }}월</a>
+          <a>2024</a>
+        </div>
+        <img
+          src="../img/right_button.png"
+          class="nav-icon"
+          @click="nextMonth"
+        />
+      </div>
+      <div class="navbar-right">
+        <router-link class="nav-link" to="/list"
+          ><img src="../img/payment_detail.png" class="nav-icon"
+        /></router-link>
+        <router-link class="nav-link" to="/summary"
+          ><img src="../img/graph_button.png" class="nav-icon"
+        /></router-link>
+        <router-link class="nav-link" to="/calendar"
+          ><img src="../img/calendar_button.png" class="nav-icon"
+        /></router-link>
+        <router-link class="nav-link" to="/list/user"
+          ><img src="../img/profile.png" class="nav-icon"
+        /></router-link>
+      </div>
+    </div>
+  </nav>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -72,15 +72,15 @@
 //   }
 // }
 
-import { ref, inject, watch } from 'vue';
+import { ref, inject, watch } from "vue";
 
 export default {
-  name: 'Navigator',
+  name: "Navigator",
   props: {
     fetchTransactions: {
       type: Function,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const month = ref(new Date().getMonth() + 1); // 현재 월로 초기화

@@ -85,7 +85,7 @@ function applyFilters() {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 300px; /* 최대 너비를 설정하여 세로 정렬 유지 */
   position: sticky; /* FilterBar를 고정 위치로 설정 */
-  top: 20px; /* 상단에서 20px 떨어진 위치에 고정 */
+  top: 120px; /* 상단에서 20px 떨어진 위치에 고정 */
 }
 
 .filter-section {
