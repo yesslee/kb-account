@@ -280,7 +280,7 @@ function calculateDailyTotals(transactions) {
 
 .list-header-total {
   margin: 0 10px;
-  font-size: 24px; /* 크기를 조정하여 더 잘 맞도록 함 */
+  font-size: 24px; /*크기를 조정하여 더 잘 맞도록 함 */
 }
 
 .list-header-money {
