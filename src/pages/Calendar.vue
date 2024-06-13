@@ -1,10 +1,5 @@
 <template>
   <div class="calendar">
-    <div class="calendar-header">
-      <button @click="prevMonth">이전 달</button>
-      <div>{{ monthNames[currentMonth] }} {{ currentYear }}</div>
-      <button @click="nextMonth">다음 달</button>
-    </div>
     <div class="calendar-body">
       <div class="calendar-row">
         <div class="calendar-day" v-for="day in dayNames" :key="day">{{ day }}</div>
@@ -73,24 +68,6 @@ const weeks = computed(() => {
 
   return weeks;
 });
-
-const prevMonth = () => {
-  if (currentMonth.value === 0) {
-    currentMonth.value = 11;
-    currentYear.value--;
-  } else {
-    currentMonth.value--;
-  }
-};
-
-const nextMonth = () => {
-  if (currentMonth.value === 11) {
-    currentMonth.value = 0;
-    currentYear.value++;
-  } else {
-    currentMonth.value++;
-  }
-};
 
 const getIncome = (date) => {
   const filteredTransactions = transactions.value.filter(
