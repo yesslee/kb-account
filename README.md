@@ -14,7 +14,7 @@
   <td>이은재</td>
   <td>서석현</td>
   <td align="center"><a href="https://github.com/dh1010a">백도현</a> </b><br />Pinia Store<br />Transaction</td></td>
-  <td align="center"><a href="https://github.com/SuhJiyeon">서지연</a><b><br/>Calendar <br/> AddTransaction</td></td>
+  <td align="center"><a href="https://github.com/SuhJiyeon">서지연</a><br/>Calendar <br/> AddTransaction</td></td>
   <td><a href="https://github.com/yesslee">이예슬</a> <br />Router<br />Login & UserInfo</td>
 </tr>
 </table>
