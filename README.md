@@ -13,7 +13,7 @@
 <tr>
   <td></td>
   <td></td>
-  <td align="center"><a href="https://github.com/dh1010a">백도현</a> </b><br /><br />Pinia Store<br />Transaction</td></td>
+  <td align="center"><a href="https://github.com/dh1010a">백도현</a> </b><br />Pinia Store<br />Transaction</td></td>
   <td></td>
   <td></td>
 </tr>
