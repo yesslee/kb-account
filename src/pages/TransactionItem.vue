@@ -40,11 +40,14 @@ function getCategoryColor(category) {
     // 카테고리에 따른 배경색 매핑
     const categoryColors = {
       '식비': '#4CAF50',
-      '교통': '#32d3e5',
+      '교통': '#6c8a00',
       '생활': '#2196F3',
       '카페': '#E91E63',
       '쇼핑' : '#ffaae8',
-      '용돈' : '#eded1b'
+      '용돈' : '#eded1b',
+      '여행/숙박' : '#b3b7ff' ,
+      '건강' : '#20aed8'
+
       // 추가적인 카테고리와 색상 매핑
     };
 

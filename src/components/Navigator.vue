@@ -3,7 +3,7 @@
   <nav class="navbar navbar-light">
     <div class="navbar-content">
       <div class="navbar-left">
-        <a href="#">KB-ACCOUNT</a>
+        <a href="/">KB-ACCOUNT</a>
       </div>
       <div class="navbar-center">
         <img
@@ -106,6 +106,7 @@ export default {
     // Watch for changes in the month and call fetchTransactions
     watch(month, (newMonth) => {
       props.fetchTransactions(newMonth);
+      
     });
 
     return {
@@ -136,7 +137,7 @@ export default {
 
 /* 네비게이션 바가 페이지 상단에 고정되도록 수정 */
 .navbar {
-  position: -webkit-sticky; /* for Safari */
+  position: -webkit-sticky; /* for Safari */  
   position: sticky;
   top: 0;
   z-index: 1000; /* ensure it stays on top */

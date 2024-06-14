@@ -1,7 +1,7 @@
 <template>
-  <Navigator :fetchTransactions="fetchTransactionsForMonth"></Navigator>
+  <Navigator :fetchTransactions="fetchTransactionsForMonth"  ></Navigator>
   <div class="container">
-    <router-view></router-view>
+    <router-view ></router-view>
   </div>
 </template>
 

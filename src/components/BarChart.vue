@@ -24,17 +24,7 @@ export default {
     const route = useRoute()
     const id = ref(null)
     const transactionStore = useTransactionStore();
-    const transactionList = computed(() => transactionStore.transactionList);
-
-    // onMounted(async () => {
-    //   id.value = route.params.id
-    //   const transactionStore = useTransactionStore()
-    //   transactionList.value = await transactionStore.fetchTransactionList(id.value)
-    // })
-
-    // watchEffect(() => {
-    //   console.log(transactionList.value)  // 데이터를 제대로 가져오는지 확인하기 위해 로그 출력
-    // })
+    const transactionList = computed(()=>transactionStore.totalTransactionList);
 
     const chartData = computed(() => {
       const transactions = transactionList.value.filter(transaction => transaction.memberId === 'dh1010a')
@@ -45,8 +35,8 @@ export default {
       const currentDate = new Date()
       const currentYear = currentDate.getFullYear()
       const currentMonth = currentDate.getMonth()
-      const startMonth = (currentMonth - 3 + 12) % 12
-      const startYear = currentYear - (currentMonth < 3 ? 1 : 0)
+      const startMonth = (currentMonth - 4 + 12) % 12
+      const startYear = currentYear - (currentMonth < 4 ? 1 : 0)
 
       transactions.forEach(transaction => {
         const date = new Date(transaction.date)
@@ -80,13 +70,13 @@ export default {
         labels: labels,
         datasets: [
           {
-            label: 'Income',
+            label: '수입',
             backgroundColor: 'rgba(54, 162, 235, 0.6)',
             borderColor: 'rgba(54, 162, 235, 1)',
             data: incomeData
           },
           {
-            label: 'Expense',
+            label: '지출',
             backgroundColor: 'rgba(255, 99, 132, 0.6)',
             borderColor: 'rgba(255, 99, 132, 1)',
             data: expenseData
