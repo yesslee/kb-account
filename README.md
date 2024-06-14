@@ -33,6 +33,16 @@ cd kb-account
 npm run dev
 ```
 
+
+# Architecture
+
+<img width="700" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/c700ba23-79d3-42f9-8512-e7393dfa7c3a">
+
+## Components
+
+<img width="700" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/9b56db0b-e406-46e3-b3d1-c2abdfd86117">
+
+
 ## UI Components
 
 ### Login
