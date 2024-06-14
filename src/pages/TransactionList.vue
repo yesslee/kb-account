@@ -58,12 +58,9 @@
   <TransactionEditModal
     v-if="showTransactionDetailModalFlag"
     :show="showTransactionDetailModalFlag"
-    @sendClose="closeTransactionDetailModal"
-  >
-    <div>
-      <!-- Transaction detail content goes here -->
-    </div>
-  </TransactionEditModal>
+    :transactionItem="selectedTransaction"
+    @sendClose="closeTransactionDetailModal" 
+  />
 </template>
 
 <script setup>
