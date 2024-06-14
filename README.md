@@ -63,6 +63,11 @@ npm run dev
 > MOCK서버에서 transaction 내역을 가져와서 보여줍니다.
 > Filter를 통해 원하는 내역만 가져올 수 있습니다.
 
+### EditModal
+<img width="585" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/9ddd694d-2da0-464c-a214-aa4ec0891198">
+
+> 내역 클릭시 수정과 삭제를 할 수 있는 모달입니다.
+
 ### Chart
 ![bar](https://github.com/lej8924/kb-account/assets/71022086/da934cdb-b814-4c88-8dfe-76035cadd27e)
 ![donut](https://github.com/lej8924/kb-account/assets/71022086/d84fbd69-189b-471d-90bc-bf63ab4b2195)
