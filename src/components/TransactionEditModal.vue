@@ -165,7 +165,7 @@
     function saveTransaction() {
       editedTransaction.id = props.transactionItem.id;
       editedTransaction.memberId = props.transactionItem.memberId;
-      console.log(editedTransaction);
+      console.log("edit",editedTransaction);
       updateTransaction(editedTransaction, ()=>{
             router.push('/list')
         });

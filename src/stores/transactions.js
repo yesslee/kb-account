@@ -87,7 +87,7 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       const response = await axios.post(BASEURI + `/${transaction}`, payload)
       console.log("test",response.status)
       if (response.status === 201) {
-        state.totalTransactionList.push({ memberId, date, price, title, category, type })
+        state.transactionList.push({ memberId, date, price, title, category, type })
         successCallback();
       } else {
         alert('거래내역 추가 실패 : ' + response.data.message);

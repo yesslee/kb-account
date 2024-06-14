@@ -10,10 +10,14 @@
         <label for="category">카테고리</label>
         <select v-model="newTransaction.category" id="category" required>
           <option disabled value="">카테고리를 골라주세요</option>
-          <option>여행/숙박</option>
-          <option>교통</option>
           <option>식비</option>
-          <option>교육/학습</option>
+          <option>카페</option>
+          <option>생활</option>
+          <option>교통</option>
+          <option>쇼핑</option>
+          <option>용돈</option>
+          <option>여행/숙박</option>
+          <option>건강</option>
         </select>
       </div>
       <div class="form-group">

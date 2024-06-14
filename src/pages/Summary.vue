@@ -33,6 +33,7 @@ export default defineComponent({
   components: {
     BarChart,DonutChart 
   },
+
 })
 </script>
 
