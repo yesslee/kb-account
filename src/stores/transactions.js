@@ -87,6 +87,9 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       const response = await axios.post(BASEURI + `/${transaction}`, payload)
       console.log("test",response.status)
       if (response.status === 201) {
+        if (date.startsWith(date.substr(0, 7))) {
+          state.transactionList.push({ memberId, date, price, title, category, type })
+        }
         state.totalTransactionList.push({ memberId, date, price, title, category, type })
         successCallback();
       } else {
@@ -128,6 +131,8 @@ export const useTransactionStore = defineStore("transactionStore", () => {
       if (response.status === 200) {
         let index = state.transactionList.findIndex((transaction) => transaction.id === id);
         state.transactionList.splice(index, 1);
+        let idx = state.totalTransactionList.findIndex((transaction) => transaction.id === id);
+        state.totalTransactionList.splice(idx, 1);
         successCallback();
       } else {
         alert('거래내역 삭제 실패 : ' + response.data.message);
