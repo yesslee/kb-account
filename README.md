@@ -2,10 +2,6 @@
 # Product Name
 > KB IT's Your Life 스켈레톤 프로젝트입니다. 
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 ## [전공 D반] Team 3 - Conflict
 >  github 관리 중 *충돌*이 너무 많이 일어나서...ㅎㅎ
 <table>
@@ -61,20 +57,5 @@ npm run dev
 
 > 일별 총 수입액과 지출액을 한 눈에 볼 수 있습니다.
 
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
 
 
-## Contributing
-
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
