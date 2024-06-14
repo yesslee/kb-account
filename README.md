@@ -11,11 +11,11 @@
 <td  align="center"><img  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjNfMTk4%2FMDAxNjkyODAxNzE0NjM2.SCI5Sn5I8rnL4GZt52HzbI-unZ0V_PaWuTfo6PdyJewg.MJQeysKrPhQ2SvB46pXW7k3ZBIsBq9oeOY4O7BMeCDYg.PNG.uou_xox_s2%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25B4%25C2_%25BE%25C6%25C6%25AE%25BF%25F6%25C5%25A9_5.png&type=a340"  width="120px;"  alt="이은재"/></td>
 <td  align="center"><img  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjNfMTk4%2FMDAxNjkyODAxNzE0NjM2.SCI5Sn5I8rnL4GZt52HzbI-unZ0V_PaWuTfo6PdyJewg.MJQeysKrPhQ2SvB46pXW7k3ZBIsBq9oeOY4O7BMeCDYg.PNG.uou_xox_s2%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25B4%25C2_%25BE%25C6%25C6%25AE%25BF%25F6%25C5%25A9_5.png&type=a340"  width="120px;"  alt="이은재"/></td>
 <tr>
-  <td></td>
-  <td></td>
+  <td>이은재</td>
+  <td>서석현</td>
   <td align="center"><a href="https://github.com/dh1010a">백도현</a> </b><br />Pinia Store<br />Transaction</td></td>
-  <td></td>
-  <td></td>
+  <td>서지연</td>
+  <td>이예슬</td>
 </tr>
 </table>
 
@@ -74,5 +74,41 @@ npm run dev
 
 > 일별 총 수입액과 지출액을 한 눈에 볼 수 있습니다.
 
+```bash
+.
+├── db-server
+│   └── MOCK_DATA.json
+├── public
+│   └── favicon.ico
+├── src
+│   ├── components
+│   │   ├── BarChart.vue
+│   │   ├── BoardChart.vue
+│   │   ├── Navigator.vue
+│   │   └── TransactionEditModal.vue
+│   ├── pages
+│   │   ├── AddTransaction.vue
+│   │   ├── Calendar.vue
+│   │   ├── FiliterBar.vue
+│   │   ├── Login.vue
+│   │   ├── NotFound.vue
+│   │   ├── Summary.vue
+│   │   ├── TransactionList.vue
+│   │   ├── TransactionItem.vue
+│   │   └── UserInfo.vue
+│   ├── router
+│   │   └── index.js
+│   ├── stores
+│   │   ├── auth.js
+│   │   └── Transactions.js
+│   ├── App.vue
+│   ├── main.js
+│   └── style.css
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+└── vite.config.js
+```
 
 
