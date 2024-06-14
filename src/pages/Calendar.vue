@@ -1,10 +1,10 @@
 <template>
   <div class="calendar">
-    <div class="calendar-header">
+    <!-- <div class="calendar-header">
       <button @click="prevMonth">이전</button>
       <span>{{ monthNames[currentMonth.value] }} {{ currentYear.value }}</span>
       <button @click="nextMonth">다음</button>
-    </div>
+    </div> -->
     <div class="calendar-body">
       <div class="calendar-row">
         <div class="calendar-day" v-for="day in dayNames" :key="day">{{ day }}</div>
@@ -30,16 +30,18 @@
 </template>
 
 <script setup>
-import { ref, computed,defineProps } from "vue";
+import { ref, computed,inject } from "vue";
 import { useTransactionStore } from "@/stores/transactions.js";
 
-const props = defineProps({
-  month: {
-    type: String,
-    required: true
-  }
-});
-console.log("calcal",props.month);
+// const props = defineProps({
+//   month: {
+//     type: String,
+//     required: true
+//   }
+// });
+
+const month = inject('currentMonth');
+console.log("calcal",month.value);
 
 const currentYear = ref(new Date().getFullYear());
 const currentMonth = ref(new Date().getMonth());
@@ -50,8 +52,8 @@ const transactionStore = useTransactionStore();
 const transactions = computed(() => transactionStore.totalTransactionList);
 
 const weeks = computed(() => {
-  const startOfMonth = new Date(currentYear.value, currentMonth.value, 1);
-  const endOfMonth = new Date(currentYear.value, currentMonth.value + 1, 0);
+  const startOfMonth = new Date(currentYear.value, month.value, 1);
+  const endOfMonth = new Date(currentYear.value, month.value + 1, 0);
 
   const weeks = [];
   let currentWeek = [];
