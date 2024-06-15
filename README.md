@@ -11,11 +11,11 @@
 <td  align="center"><img  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjNfMTk4%2FMDAxNjkyODAxNzE0NjM2.SCI5Sn5I8rnL4GZt52HzbI-unZ0V_PaWuTfo6PdyJewg.MJQeysKrPhQ2SvB46pXW7k3ZBIsBq9oeOY4O7BMeCDYg.PNG.uou_xox_s2%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25B4%25C2_%25BE%25C6%25C6%25AE%25BF%25F6%25C5%25A9_5.png&type=a340"  width="120px;"  alt="이은재"/></td>
 <td  align="center"><img  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjNfMTk4%2FMDAxNjkyODAxNzE0NjM2.SCI5Sn5I8rnL4GZt52HzbI-unZ0V_PaWuTfo6PdyJewg.MJQeysKrPhQ2SvB46pXW7k3ZBIsBq9oeOY4O7BMeCDYg.PNG.uou_xox_s2%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25B4%25C2_%25BE%25C6%25C6%25AE%25BF%25F6%25C5%25A9_5.png&type=a340"  width="120px;"  alt="이은재"/></td>
 <tr>
-  <td>이은재</td>
-  <td>서석현</td>
+  <td align="center">이은재</td>
+  <td align="center">서석현</td>
   <td align="center"><a href="https://github.com/dh1010a">백도현</a> </b><br />Pinia Store<br />Transaction</td></td>
   <td align="center"><a href="https://github.com/SuhJiyeon">서지연</a><br/>Calendar <br/> AddTransaction</td></td>
-  <td><a href="https://github.com/yesslee">이예슬</a> <br />Router<br />Login & UserInfo</td>
+  <td align="center"><a href="https://github.com/yesslee">이예슬</a> <br />Router<br />Login & UserInfo</td>
 </tr>
 </table>
 
@@ -43,19 +43,36 @@ npm run dev
 
 # Architecture
 
-<img width="828" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/c700ba23-79d3-42f9-8512-e7393dfa7c3a">
+<img width="800" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/c700ba23-79d3-42f9-8512-e7393dfa7c3a">
 
-## Components
+# Components
 
-<img width="828" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/9b56db0b-e406-46e3-b3d1-c2abdfd86117">
+<img width="800" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/9b56db0b-e406-46e3-b3d1-c2abdfd86117">
 
 
-## UI Components
+# UI Components
+
+<img width="800" src="https://github.com/lej8924/kb-account/assets/51228946/7a0a5565-0cfd-48ec-80b2-06efb40d270e">
+
+## Screen
+
+| Login |
+| :---: |
+| <img width="325" alt="Login" src="https://github.com/lej8924/kb-account/assets/51228946/c7e24437-df5f-492e-8ea4-def4c0cd7912"> |
+| ID : dh1010a PW : 1234로 로그인 |
+
+
+| Transaction |
+| :---: |
+|<img width="325" alt="Transaction" src="https://github.com/lej8924/kb-account/assets/51228946/a5bda597-4bc2-48e6-82ac-7c120d9eea4c">|
+
+
+
 
 ### Login
 ![login](https://github.com/lej8924/kb-account/assets/71022086/c0d0676b-82b5-4292-b8a0-530ea10a7497)
 
-> ID : dh1010a | PW : 1234로 로그인하면 됩니다!
+
 
 ### Transaction
 ![home](https://github.com/lej8924/kb-account/assets/71022086/e778c6d8-5d9b-4260-bb7c-5f5b4185c3b3)
