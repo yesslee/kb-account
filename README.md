@@ -60,43 +60,14 @@ npm run dev
 
 | 로그인 및 정보 수정 | 거래내역 및 필터링 |
 | :---: | :---: |
-| <img width="325" alt="Login" src = "https://github.com/lej8924/kb-account/assets/51228946/9fde4eed-e05b-411a-b95a-697e101f9c4a"> | |<img width="325" alt="Transaction" src="https://github.com/lej8924/kb-account/assets/51228946/5c65e28b-ba3e-4a78-bed0-b8211ac8b198">|
-| ID : dh1010a PW : 1234로 로그인 | MOCK서버에서 transaction 내역을 가져와서 보여줍니다. |
+| <img width="325" alt="Login" src = "https://github.com/lej8924/kb-account/assets/51228946/9fde4eed-e05b-411a-b95a-697e101f9c4a"> | <img width="325" alt="Transaction" src="https://github.com/lej8924/kb-account/assets/51228946/cad87f19-b4b3-4321-9e96-4031329e79ef"> |
+| ID : dh1010a PW : 1234로 로그인 | MOCK서버에서 transaction 내역을 가져와서 <br/>  원하는 내역을 보여줍니다. |
 
+| 거래 내역 추가 및 수정 | 거래내역 요약 및 분석|
+| :---: | :---: |
+| <img width="325" alt="Edit" src = "https://github.com/lej8924/kb-account/assets/51228946/af740e6b-66f1-4bbd-bd7f-0cda3d40743f"> | <img width="325" alt="Summary" src = "https://github.com/lej8924/kb-account/assets/51228946/93cc9675-c86e-4443-a638-0d524f177ead"> |
+| 거래 날짜 및 내용을 추가 및 수정합니다. | Bar,Donut,달력 형태로 각각 월별 수입/지출<br>현황과 카테고리별 지출 현황을 볼 수 있습니다. |
 
-
-
-
-
-
-
-
-### Login
-![login](https://github.com/lej8924/kb-account/assets/71022086/c0d0676b-82b5-4292-b8a0-530ea10a7497)
-
-
-
-### Transaction
-![home](https://github.com/lej8924/kb-account/assets/71022086/e778c6d8-5d9b-4260-bb7c-5f5b4185c3b3)
-
-> MOCK서버에서 transaction 내역을 가져와서 보여줍니다.
-> Filter를 통해 원하는 내역만 가져올 수 있습니다.
-
-### EditModal
-<img width="585" alt="image" src="https://github.com/lej8924/kb-account/assets/51228946/9ddd694d-2da0-464c-a214-aa4ec0891198">
-
-> 내역 클릭시 수정과 삭제를 할 수 있는 모달입니다.
-
-### Chart
-![bar](https://github.com/lej8924/kb-account/assets/71022086/da934cdb-b814-4c88-8dfe-76035cadd27e)
-![donut](https://github.com/lej8924/kb-account/assets/71022086/d84fbd69-189b-471d-90bc-bf63ab4b2195)
-
-> Bar와 Donut형태로 각각 월별 수입/지출 현황과 카테고리별 지출 현황을 볼 수 있습니다.
-
-### Calendar
-![calendar](https://github.com/lej8924/kb-account/assets/71022086/5f1065b2-73a9-4591-97a3-3661ad44b21f)
-
-> 일별 총 수입액과 지출액을 한 눈에 볼 수 있습니다.
 
 ## 프로젝트 구조
 
