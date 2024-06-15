@@ -56,15 +56,17 @@ npm run dev
 
 ## Screen
 
-| Login |
-| :---: |
-| <img width="325" alt="Login" src="https://github.com/lej8924/kb-account/assets/51228946/c7e24437-df5f-492e-8ea4-def4c0cd7912"> |
-| ID : dh1010a PW : 1234로 로그인 |
 
 
-| Transaction |
-| :---: |
-|<img width="325" alt="Transaction" src="https://github.com/lej8924/kb-account/assets/51228946/a5bda597-4bc2-48e6-82ac-7c120d9eea4c">|
+| 로그인 및 정보 수정 | 거래내역 및 필터링 |
+| :---: | :---: |
+| <img width="325" alt="Login" src = "https://github.com/lej8924/kb-account/assets/51228946/9fde4eed-e05b-411a-b95a-697e101f9c4a"> | |<img width="325" alt="Transaction" src="https://github.com/lej8924/kb-account/assets/51228946/5c65e28b-ba3e-4a78-bed0-b8211ac8b198">|
+| ID : dh1010a PW : 1234로 로그인 | MOCK서버에서 transaction 내역을 가져와서 보여줍니다. |
+
+
+
+
+
 
 
 
