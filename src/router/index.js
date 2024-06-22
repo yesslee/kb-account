@@ -12,13 +12,13 @@ import NotFound from "@/pages/NotFound.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", name: "login", component: Login },
-    { path: "/list", name: "transactionList", component: TransactionList, meta: { requiresAuth: true } },
-    { path: "/list/add", name: "addTransaction", component: AddTransaction, meta: { requiresAuth: true } },
-    { path: "/list/user", name: "userInfo", component: UserInfo, meta: { requiresAuth: true } },
-    { path: "/summary", name: "summary", component: Summary, meta: { requiresAuth: true } },
-    { path: "/calendar", name: "calendar", component: Calendar, meta: { requiresAuth: true } },
-    { path: "/:paths(.*)*", name: "NotFound", component: NotFound },
+    { path: "/kb-account", name: "login", component: Login },
+    { path: "/kb-account/list", name: "transactionList", component: TransactionList, meta: { requiresAuth: true } },
+    { path: "/kb-account/list/add", name: "addTransaction", component: AddTransaction, meta: { requiresAuth: true } },
+    { path: "/kb-account/list/user", name: "userInfo", component: UserInfo, meta: { requiresAuth: true } },
+    { path: "/kb-account/summary", name: "summary", component: Summary, meta: { requiresAuth: true } },
+    { path: "/kb-account/calendar", name: "calendar", component: Calendar, meta: { requiresAuth: true } },
+    { path: "/kb-account/:paths(.*)*", name: "NotFound", component: NotFound },
   ],
 });
 
