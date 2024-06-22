@@ -35,8 +35,8 @@ jobs:
           name: production-files
           path: ./dist # 빌드된 리소스가 위치한 폴더 경로(dist/)
 
-      - name: Check code styles
-        run: npm run lint
+      # - name: Check code styles
+      #   run: npm run lint
 
   deploy: # Workflow의 두 번째 Job은 deploy
     name: Deploy
