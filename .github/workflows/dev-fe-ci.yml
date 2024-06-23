@@ -35,8 +35,8 @@ jobs:
           name: production-files
           path: ./dist # 빌드된 리소스가 위치한 폴더 경로(dist/)
 
-      - name: Run json-server
-        run: npx json-server --watch db-server/MOCK_DATA.json --port 3001
+      # - name: Run json-server
+      #   run: npx json-server --watch db-server/MOCK_DATA.json --port 3001
 
       # - name: Check code styles
       #   run: npm run lint
